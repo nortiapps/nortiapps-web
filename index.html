@@ -1,5 +1,1218 @@
-<!-- Example of a text input with a placeholder -->
-<input type="text" placeholder="Enter your name">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wuffi — La comunidad de dueños de perros en Chile</title>
+<meta name="description" content="Wuffi conecta a dueños de perros en Chile. Paseos en vivo, alertas de zona, perros perdidos y más. Gratis, sin publicidad.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --g: #1D9E75;
+  --g2: #22B186;
+  --g3: #0d6e51;
+  --a: #EF9F27;
+  --a2: #f7b84b;
+  --bg: #090f0c;
+  --bg2: #0d1a13;
+  --bg3: #112219;
+  --surf: #162e20;
+  --surf2: #1d3d2b;
+  --text: #e8f5ee;
+  --text2: #8ab89e;
+  --text3: #4d7a5e;
+  --border: rgba(29,158,117,0.15);
+  --border2: rgba(29,158,117,0.3);
+}
 
-<!-- Example of a textarea with a placeholder -->
-<textarea placeholder="Write your message here..."></textarea>
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 16px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NOISE TEXTURE */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:1000;
+  opacity:.6;
+}
+
+/* ═══ NAV ═══ */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 500;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background .3s, border-color .3s;
+}
+nav.scrolled {
+  background: rgba(9,15,12,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: var(--text);
+}
+.nav-logo-icon {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, var(--g), var(--g2));
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 0 20px rgba(29,158,117,.4);
+}
+.nav-logo-text {
+  font-family: 'Fraunces', serif;
+  font-weight: 700;
+  font-size: 22px;
+  letter-spacing: -.3px;
+}
+.nav-cta {
+  background: var(--g);
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .2px;
+  transition: background .2s, transform .15s, box-shadow .2s;
+}
+.nav-cta:hover {
+  background: var(--g2);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(29,158,117,.35);
+}
+
+/* ═══ HERO ═══ */
+.hero {
+  min-height: 100vh;
+  padding: 120px 32px 80px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Orbs de fondo */
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(29,158,117,.18) 0%, transparent 70%);
+  top: -100px; right: -200px;
+  pointer-events: none;
+  animation: orb1 8s ease-in-out infinite alternate;
+}
+@keyframes orb1 {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(-40px, 40px) scale(1.1); }
+}
+
+.hero-orb2 {
+  position: absolute;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(239,159,39,.1) 0%, transparent 70%);
+  bottom: 0; left: -100px;
+  pointer-events: none;
+  animation: orb2 10s ease-in-out infinite alternate;
+}
+@keyframes orb2 {
+  from { transform: translate(0,0); }
+  to   { transform: translate(30px,-30px); }
+}
+
+/* Patas flotantes */
+.paws-bg {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.paw-float {
+  position: absolute;
+  font-size: 24px;
+  opacity: .06;
+  animation: pawFloat linear infinite;
+}
+@keyframes pawFloat {
+  0%   { transform: translateY(0) rotate(0deg); opacity:.06; }
+  50%  { opacity:.1; }
+  100% { transform: translateY(-120vh) rotate(180deg); opacity:0; }
+}
+
+.hero-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(29,158,117,.12);
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--g2);
+  font-weight: 500;
+  margin-bottom: 24px;
+  animation: fadeUp .6s ease both;
+}
+.hero-badge .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--g2);
+  box-shadow: 0 0 8px var(--g2);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { box-shadow: 0 0 4px var(--g2); }
+  50%      { box-shadow: 0 0 12px var(--g2); }
+}
+
+.hero-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -2px;
+  margin-bottom: 20px;
+  animation: fadeUp .7s .1s ease both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--g2);
+}
+.hero-title .amber {
+  color: var(--a);
+}
+
+.hero-sub {
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: var(--text2);
+  line-height: 1.7;
+  max-width: 440px;
+  margin-bottom: 36px;
+  font-weight: 300;
+  animation: fadeUp .7s .2s ease both;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  animation: fadeUp .7s .3s ease both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--g), var(--g2));
+  color: #fff;
+  text-decoration: none;
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 8px 32px rgba(29,158,117,.3);
+}
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(29,158,117,.45);
+}
+.btn-primary svg { flex-shrink: 0; }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--border2);
+  color: var(--text2);
+  text-decoration: none;
+  padding: 14px 24px;
+  border-radius: 14px;
+  font-size: 15px;
+  font-weight: 500;
+  transition: background .2s, color .2s;
+}
+.btn-secondary:hover {
+  background: rgba(255,255,255,.08);
+  color: var(--text);
+}
+
+.hero-note {
+  margin-top: 16px;
+  font-size: 12px;
+  color: var(--text3);
+  animation: fadeUp .7s .4s ease both;
+}
+
+/* Phone mockup */
+.hero-phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: phoneIn .9s .2s ease both;
+}
+@keyframes phoneIn {
+  from { opacity:0; transform: translateY(30px) scale(.95); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+
+.phone-wrap {
+  position: relative;
+  width: 260px;
+  animation: phoneFloat 5s ease-in-out infinite;
+}
+@keyframes phoneFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+.phone-shell {
+  width: 260px;
+  height: 520px;
+  background: linear-gradient(160deg, #1a2e22, #0f1e15);
+  border-radius: 44px;
+  border: 2px solid rgba(29,158,117,.25);
+  box-shadow:
+    0 0 0 1px rgba(0,0,0,.5),
+    0 40px 80px rgba(0,0,0,.6),
+    0 0 60px rgba(29,158,117,.15),
+    inset 0 1px 0 rgba(255,255,255,.05);
+  overflow: hidden;
+  position: relative;
+}
+
+/* Notch */
+.phone-notch {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px; height: 20px;
+  background: #090f0c;
+  border-radius: 20px;
+  z-index: 10;
+}
+
+/* Screen content */
+.phone-screen {
+  position: absolute;
+  inset: 0;
+  padding: 50px 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+}
+
+/* Status bar */
+.phone-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 9px;
+  color: rgba(255,255,255,.4);
+  padding: 0 4px;
+  margin-bottom: 4px;
+}
+
+/* App header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+.app-header-title {
+  font-family: 'Fraunces', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #fff;
+}
+.app-avatar {
+  width: 30px; height: 30px;
+  background: linear-gradient(135deg, var(--g), var(--g2));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+}
+
+/* Banner paseo */
+.app-banner {
+  background: linear-gradient(135deg, var(--g3), var(--g));
+  border-radius: 16px;
+  padding: 14px;
+  position: relative;
+  overflow: hidden;
+}
+.app-banner::after {
+  content:'';
+  position:absolute;
+  right:-20px; top:-20px;
+  width:80px; height:80px;
+  background: rgba(255,255,255,.06);
+  border-radius: 50%;
+}
+.banner-label {
+  font-size: 10px;
+  color: rgba(255,255,255,.6);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 3px;
+}
+.banner-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.live-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+.banner-stats {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+.banner-stat { font-size: 11px; color: rgba(255,255,255,.7); }
+.banner-stat strong { color:#fff; font-size:13px; }
+
+/* Friend cards */
+.section-label {
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 0 2px;
+  margin-top: 4px;
+}
+.friend-card {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.06);
+  border-radius: 12px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.friend-avatar {
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.friend-info { flex: 1; min-width: 0; }
+.friend-name { font-size: 11px; font-weight: 600; color: #fff; }
+.friend-sub  { font-size: 10px; color: var(--text3); }
+.friend-badge {
+  font-size: 9px;
+  padding: 2px 7px;
+  background: rgba(29,158,117,.2);
+  color: var(--g2);
+  border-radius: 20px;
+}
+
+/* Alert mini */
+.alert-mini {
+  background: rgba(239,159,39,.08);
+  border: 1px solid rgba(239,159,39,.2);
+  border-radius: 12px;
+  padding: 9px 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.alert-icon { font-size: 14px; }
+.alert-text { font-size: 10px; color: rgba(255,255,255,.7); }
+.alert-text strong { color: var(--a); font-size: 11px; display: block; }
+
+/* Bottom nav */
+.phone-nav {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: rgba(10,16,12,.95);
+  border-top: 1px solid rgba(255,255,255,.06);
+  padding: 10px 0 16px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 7px;
+  color: var(--text3);
+}
+.nav-item.active { color: var(--g2); }
+.nav-item-icon { font-size: 18px; line-height: 1; }
+
+/* Glow de fondo del teléfono */
+.phone-glow {
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; height: 100px;
+  background: radial-gradient(ellipse, rgba(29,158,117,.3) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ═══ DIVIDER ═══ */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border2), transparent);
+  margin: 0 auto;
+}
+
+/* ═══ SECCIÓN GENÉRICA ═══ */
+section {
+  padding: 100px 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ═══ STATS ═══ */
+.stats-section {
+  max-width: 100%;
+  padding: 60px 32px;
+  background: linear-gradient(135deg, var(--bg2), var(--bg3));
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.stats-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+.stat-item {}
+.stat-num {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 700;
+  color: var(--g2);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.stat-num .accent { color: var(--a); }
+.stat-label {
+  font-size: 13px;
+  color: var(--text2);
+  font-weight: 300;
+}
+
+/* ═══ FEATURES ═══ */
+.features-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+.section-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--g2);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+.section-title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(32px, 4vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  margin-bottom: 16px;
+}
+.section-sub {
+  color: var(--text2);
+  font-size: 17px;
+  font-weight: 300;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  position: relative;
+  overflow: hidden;
+}
+.feature-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(29,158,117,.05), transparent);
+  opacity: 0;
+  transition: opacity .2s;
+}
+.feature-card:hover {
+  border-color: var(--border2);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+.feature-card:hover::before { opacity: 1; }
+
+.feature-card.large {
+  grid-column: span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: center;
+}
+
+.feature-icon {
+  width: 48px; height: 48px;
+  background: rgba(29,158,117,.1);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px;
+  margin-bottom: 18px;
+  transition: background .2s, box-shadow .2s;
+}
+.feature-card:hover .feature-icon {
+  background: rgba(29,158,117,.18);
+  box-shadow: 0 0 20px rgba(29,158,117,.2);
+}
+.feature-card.amber .feature-icon {
+  background: rgba(239,159,39,.1);
+  border-color: rgba(239,159,39,.25);
+}
+.feature-card.amber:hover .feature-icon {
+  background: rgba(239,159,39,.18);
+  box-shadow: 0 0 20px rgba(239,159,39,.2);
+}
+
+.feature-name {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.feature-desc {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* Mini-ilustración de mapa */
+.map-mini {
+  height: 140px;
+  background: linear-gradient(135deg, #0d2b1e, #112519);
+  border-radius: 12px;
+  position: relative;
+  overflow: hidden;
+}
+.map-mini::before {
+  content:'';
+  position:absolute; inset:0;
+  background:
+    repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,.02) 30px, rgba(255,255,255,.02) 31px),
+    repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,.02) 40px, rgba(255,255,255,.02) 41px);
+}
+.map-dot {
+  position: absolute;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  animation: mapPulse 2s ease-in-out infinite;
+}
+.map-dot::after {
+  content:'';
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  background: currentColor;
+  opacity:.2;
+  animation: mapRing 2s ease-in-out infinite;
+}
+@keyframes mapPulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+@keyframes mapRing  { 0%{transform:scale(1);opacity:.2} 100%{transform:scale(2.5);opacity:0} }
+
+.map-dot.d1 { background:var(--g); color:var(--g); top:40%; left:30%; }
+.map-dot.d2 { background:var(--a); color:var(--a); top:25%; left:55%; animation-delay:.5s; }
+.map-dot.d3 { background:var(--g2); color:var(--g2); top:60%; left:65%; animation-delay:1s; }
+
+/* ═══ PRIVACIDAD ═══ */
+.privacy-section {
+  max-width: 100%;
+  padding: 80px 32px;
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.privacy-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+.privacy-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 28px;
+}
+.privacy-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--text2);
+  font-weight: 300;
+}
+.privacy-check {
+  width: 22px; height: 22px;
+  background: rgba(29,158,117,.15);
+  border: 1px solid var(--g);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  font-size: 11px;
+  color: var(--g2);
+  margin-top: 1px;
+}
+
+.privacy-visual {
+  display: flex;
+  justify-content: center;
+}
+.privacy-card {
+  background: linear-gradient(135deg, var(--bg3), var(--bg2));
+  border: 1px solid var(--border2);
+  border-radius: 24px;
+  padding: 36px;
+  text-align: center;
+  max-width: 280px;
+  box-shadow: 0 24px 80px rgba(0,0,0,.4);
+}
+.privacy-icon-big {
+  font-size: 56px;
+  margin-bottom: 20px;
+  display: block;
+}
+.privacy-card-title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.privacy-card-sub {
+  font-size: 13px;
+  color: var(--text2);
+  line-height: 1.6;
+  font-weight: 300;
+}
+.privacy-badge {
+  display: inline-block;
+  margin-top: 20px;
+  font-size: 11px;
+  padding: 6px 14px;
+  background: rgba(29,158,117,.12);
+  border: 1px solid var(--border2);
+  border-radius: 100px;
+  color: var(--g2);
+}
+
+/* ═══ CTA FINAL ═══ */
+.cta-section {
+  text-align: center;
+  padding: 120px 32px;
+}
+.cta-section .section-title { margin-bottom: 16px; }
+.cta-section .section-sub   { margin-bottom: 40px; }
+.cta-actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+.cta-sub {
+  font-size: 13px;
+  color: var(--text3);
+}
+
+/* ═══ FOOTER ═══ */
+footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 40px 32px;
+  text-align: center;
+}
+.footer-logo {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+.footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px 24px;
+  margin-bottom: 20px;
+}
+.footer-links a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color .2s;
+}
+.footer-links a:hover { color: var(--g2); }
+.footer-copy {
+  font-size: 12px;
+  color: var(--text3);
+  line-height: 1.6;
+}
+
+/* ═══ ANIMACIONES DE SCROLL ═══ */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-delay-1 { transition-delay: .1s; }
+.reveal-delay-2 { transition-delay: .2s; }
+.reveal-delay-3 { transition-delay: .3s; }
+.reveal-delay-4 { transition-delay: .4s; }
+
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 900px) {
+  nav { padding: 14px 20px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 50px; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-note { text-align: center; }
+  .hero-phone { order: -1; }
+  .phone-shell { width: 220px; height: 440px; border-radius: 36px; }
+  .phone-wrap { width: 220px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); gap: 32px; }
+  .features-grid { grid-template-columns: 1fr; }
+  .feature-card.large { grid-column: span 1; grid-template-columns: 1fr; }
+  .privacy-inner { grid-template-columns: 1fr; gap: 48px; }
+  .privacy-visual { order: -1; }
+}
+@media (max-width: 600px) {
+  .hero { padding: 100px 20px 60px; }
+  section { padding: 70px 20px; }
+  .stats-section { padding: 50px 20px; }
+  .stats-inner { grid-template-columns: repeat(2,1fr); gap: 24px; }
+  .cta-section { padding: 80px 20px; }
+  footer { padding: 32px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">🐾</div>
+    <span class="nav-logo-text">Wuffi</span>
+  </a>
+  <a href="#descargar" class="nav-cta">Descargar gratis</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-orb2"></div>
+  <div class="paws-bg" id="pawsBg"></div>
+
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="dot"></span>
+        Disponible en Chile · Android
+      </div>
+      <h1 class="hero-title">
+        La comunidad de<br>
+        dueños de <em>perros</em><br>
+        en <span class="amber">Chile</span>
+      </h1>
+      <p class="hero-sub">
+        Paseos en vivo con amigos, alertas de tu zona, avisos de perros perdidos y más. Todo en tu barrio, todo privado, todo gratis.
+      </p>
+      <div class="hero-actions">
+        <a href="https://play.google.com/store/apps/details?id=cl.wuffi.app" class="btn-primary" id="descargar">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3.18 23.76c.33.18.7.24 1.06.18l12.76-7.37-2.97-2.97-10.85 10.16zm-1.92-20.8C1.09 3.3 1 3.69 1 4.1v15.8c0 .41.09.8.26 1.14l.09.08 8.85-8.85v-.2L1.35 3.2l-.09.76zM20.1 10.9l-2.72-1.57-3.14 3.14 3.14 3.14 2.75-1.58c.78-.45.78-1.68-.03-2.13zM4.24.06L17 7.43l-2.97 2.97L3.18.24C3.51.06 3.91.06 4.24.06z"/>
+          </svg>
+          Google Play
+        </a>
+        <a href="#" class="btn-secondary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity=".5"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          iOS · Próximamente
+        </a>
+      </div>
+      <p class="hero-note">Sin publicidad · Sin suscripción · 100% gratis</p>
+    </div>
+
+    <div class="hero-phone">
+      <div class="phone-wrap">
+        <div class="phone-shell">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-status">
+              <span>9:41</span>
+              <span>📶 🔋</span>
+            </div>
+            <div class="app-header">
+              <div class="app-header-title">🐾 Inicio</div>
+              <div class="app-avatar">🐕</div>
+            </div>
+            <div class="app-banner">
+              <div class="banner-label">Tu paseo</div>
+              <div class="banner-title">
+                <span class="live-dot"></span>
+                Estás paseando
+              </div>
+              <div class="banner-stats">
+                <div class="banner-stat"><strong>1.4 km</strong><br>distancia</div>
+                <div class="banner-stat"><strong>23 min</strong><br>duración</div>
+              </div>
+            </div>
+            <div class="section-label">Amigos paseando 🟢</div>
+            <div class="friend-card">
+              <div class="friend-avatar" style="background:linear-gradient(135deg,#2d6a4f,#40916c)">🐩</div>
+              <div class="friend-info">
+                <div class="friend-name">Carla · Labrador</div>
+                <div class="friend-sub">Barrio Italia · hace 5 min</div>
+              </div>
+              <div class="friend-badge">En vivo</div>
+            </div>
+            <div class="alert-mini">
+              <span class="alert-icon">☣️</span>
+              <div class="alert-text">
+                <strong>Alerta · Providencia</strong>
+                Comida en la calle en Av. Irarrázaval
+              </div>
+            </div>
+          </div>
+          <div class="phone-nav">
+            <div class="nav-item active">
+              <span class="nav-item-icon">🏠</span>
+              <span>Inicio</span>
+            </div>
+            <div class="nav-item">
+              <span class="nav-item-icon">🗺️</span>
+              <span>Mapa</span>
+            </div>
+            <div class="nav-item">
+              <span class="nav-item-icon">🔔</span>
+              <span>Comunidad</span>
+            </div>
+            <div class="nav-item">
+              <span class="nav-item-icon">👤</span>
+              <span>Perfil</span>
+            </div>
+          </div>
+        </div>
+        <div class="phone-glow"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stat-item reveal">
+      <div class="stat-num">16</div>
+      <div class="stat-label">Regiones de Chile</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-1">
+      <div class="stat-num">346</div>
+      <div class="stat-label">Comunas disponibles</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-2">
+      <div class="stat-num"><span class="accent">100%</span></div>
+      <div class="stat-label">Gratuito, sin anuncios</div>
+    </div>
+    <div class="stat-item reveal reveal-delay-3">
+      <div class="stat-num">🐾</div>
+      <div class="stat-label">Hecho en Chile</div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- FEATURES -->
+<section>
+  <div class="features-header reveal">
+    <div class="section-eyebrow">Todo lo que necesitas</div>
+    <h2 class="section-title">Diseñado para tu barrio</h2>
+    <p class="section-sub">Herramientas pensadas para dueños de perros chilenos, con privacidad en cada detalle.</p>
+  </div>
+
+  <div class="features-grid">
+    <!-- Card grande: Paseos en vivo -->
+    <div class="feature-card large reveal">
+      <div>
+        <div class="feature-icon">🟢</div>
+        <div class="feature-name">Paseos en vivo</div>
+        <div class="feature-desc">
+          Activa "Estoy saliendo ahora" y tus amigos te ven en el mapa en tiempo real. Tu ubicación exacta nunca se comparte — solo un círculo de 100m para proteger tu privacidad.
+        </div>
+      </div>
+      <div class="map-mini">
+        <div class="map-dot d1"></div>
+        <div class="map-dot d2"></div>
+        <div class="map-dot d3"></div>
+      </div>
+    </div>
+
+    <!-- Alertas -->
+    <div class="feature-card amber reveal reveal-delay-1">
+      <div class="feature-icon">⚠️</div>
+      <div class="feature-name">Alertas de zona</div>
+      <div class="feature-desc">
+        Comida en la calle, perros sueltos, zonas peligrosas. La comunidad alerta y vota — con 5 votos la alerta se auto-resuelve. Expiran en 24 horas.
+      </div>
+    </div>
+
+    <!-- Perro perdido -->
+    <div class="feature-card reveal">
+      <div class="feature-icon">🔴</div>
+      <div class="feature-name">Perro perdido</div>
+      <div class="feature-desc">
+        Publica un aviso y tus vecinos reciben una notificación automática. También para perros encontrados y puntos de hidratación deficientes.
+      </div>
+    </div>
+
+    <!-- Historial -->
+    <div class="feature-card reveal reveal-delay-1">
+      <div class="feature-icon">📍</div>
+      <div class="feature-name">Historial de paseos</div>
+      <div class="feature-desc">
+        Cada paseo guarda distancia, duración y la ruta trazada sobre el mapa. Foto conmemorativa opcional para compartir en redes sociales.
+      </div>
+    </div>
+
+    <!-- Amigos -->
+    <div class="feature-card reveal reveal-delay-2">
+      <div class="feature-icon">🤝</div>
+      <div class="feature-name">Amigos y comunidad</div>
+      <div class="feature-desc">
+        Busca dueños en tu barrio, agrega amigos y coordina paseos. Chat con mensajes rápidos, eventos con RSVP, y rutinas de paseo compartidas.
+      </div>
+    </div>
+
+    <!-- Compartir -->
+    <div class="feature-card amber reveal reveal-delay-3">
+      <div class="feature-icon">📤</div>
+      <div class="feature-name">Comparte tus logros</div>
+      <div class="feature-desc">
+        Genera una tarjeta 1080×1080 con tu foto, tu perro y los stats del paseo. Lista para IG, WhatsApp y TikTok con un toque.
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PRIVACIDAD -->
+<div class="privacy-section">
+  <div class="privacy-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Privacidad primero</div>
+      <h2 class="section-title">Tu data es tuya</h2>
+      <ul class="privacy-list">
+        <li class="privacy-item">
+          <span class="privacy-check">✓</span>
+          Tu ubicación exacta nunca se comparte — solo un área aproximada de ~1 km
+        </li>
+        <li class="privacy-item">
+          <span class="privacy-check">✓</span>
+          Solo tus amigos ven tus paseos activos, nunca extraños
+        </li>
+        <li class="privacy-item">
+          <span class="privacy-check">✓</span>
+          Las coordenadas se borran automáticamente al terminar el paseo
+        </li>
+        <li class="privacy-item">
+          <span class="privacy-check">✓</span>
+          Sin publicidad, sin venta de datos. Punto.
+        </li>
+        <li class="privacy-item">
+          <span class="privacy-check">✓</span>
+          Cumple con la Ley 19.628 y Ley 21.719 de protección de datos personales y geolocalización
+        </li>
+      </ul>
+    </div>
+    <div class="privacy-visual reveal reveal-delay-2">
+      <div class="privacy-card">
+        <span class="privacy-icon-big">🔒</span>
+        <div class="privacy-card-title">Diseñado con privacidad</div>
+        <div class="privacy-card-sub">Cada decisión de diseño priorizó proteger a los usuarios antes que la comodidad técnica.</div>
+        <span class="privacy-badge">Cumple Ley 19.628 · Ley 21.719</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA FINAL -->
+<section class="cta-section">
+  <div class="section-eyebrow reveal">¿Listo para empezar?</div>
+  <h2 class="section-title reveal reveal-delay-1">Descarga Wuffi hoy</h2>
+  <p class="section-sub reveal reveal-delay-2">Gratis, sin publicidad, sin trucos. Solo tú, tu perro y tu barrio.</p>
+  <div class="cta-actions reveal reveal-delay-3">
+    <a href="https://play.google.com/store/apps/details?id=cl.wuffi.app" class="btn-primary">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M3.18 23.76c.33.18.7.24 1.06.18l12.76-7.37-2.97-2.97-10.85 10.16zm-1.92-20.8C1.09 3.3 1 3.69 1 4.1v15.8c0 .41.09.8.26 1.14l.09.08 8.85-8.85v-.2L1.35 3.2l-.09.76zM20.1 10.9l-2.72-1.57-3.14 3.14 3.14 3.14 2.75-1.58c.78-.45.78-1.68-.03-2.13zM4.24.06L17 7.43l-2.97 2.97L3.18.24C3.51.06 3.91.06 4.24.06z"/>
+      </svg>
+      Descargar en Google Play
+    </a>
+    <a href="#" class="btn-secondary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" opacity=".5"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      iOS · Próximamente
+    </a>
+  </div>
+  <p class="cta-sub reveal reveal-delay-4">Compatible con Android 6.0+</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">🐾 Wuffi</div>
+  <div class="footer-links">
+    <a href="/privacy.html">Política de Privacidad</a>
+    <a href="/terms.html">Términos de Servicio</a>
+    <a href="mailto:soporte@nortiapps.com">Contacto</a>
+  </div>
+  <div class="footer-copy">
+    © 2026 NortiApps SpA · Providencia, Santiago, Chile<br>
+    <span style="color:var(--text3);font-size:11px">cl.wuffi.app · soporte@nortiapps.com</span>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 40);
+});
+
+// Patas flotantes
+const pawsBg = document.getElementById('pawsBg');
+const paws = ['🐾','🐕','🦮','🐩'];
+for(let i = 0; i < 12; i++) {
+  const p = document.createElement('div');
+  p.className = 'paw-float';
+  p.textContent = paws[Math.floor(Math.random()*paws.length)];
+  p.style.cssText = `
+    left: ${Math.random()*100}%;
+    bottom: -50px;
+    font-size: ${14 + Math.random()*18}px;
+    animation-duration: ${8 + Math.random()*12}s;
+    animation-delay: ${Math.random()*8}s;
+  `;
+  pawsBg.appendChild(p);
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Contador animado en stats
+function animateCount(el, target, suffix='') {
+  let start = 0;
+  const duration = 1200;
+  const step = timestamp => {
+    if(!start) start = timestamp;
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(ease * target) + suffix;
+    if(progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+}
+
+const statObserver = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = true;
+      const num = e.target.closest('.stat-item').querySelector('.stat-num');
+      if(num.textContent === '16')  animateCount(num, 16);
+      if(num.textContent === '346') animateCount(num, 346);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.stat-item').forEach(el => statObserver.observe(el));
+</script>
+</body>
+</html>
