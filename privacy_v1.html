@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Política de Privacidad · Wuffi</title>
+<meta name="description" content="Cómo Wuffi (NortiApps SpA) trata tus datos personales, redactado conforme a la Ley 19.628 y su reforma por la Ley 21.719.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1D9E75; --green-deep:#147a59; --amber:#EF9F27;
+    --bg:#fbfaf7; --surface:#ffffff; --ink:#1c2420; --ink-soft:#566159;
+    --line:#e7e4dc; --line-soft:#f0eee8; --accent-bg:#f0f8f4;
+    --shadow:0 1px 2px rgba(28,36,32,.04),0 8px 28px rgba(28,36,32,.05);
+    --radius:14px; --measure:68ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#10130f; --surface:#171b15; --ink:#e8ece6; --ink-soft:#9aa79c;
+      --line:#28301f33; --line-soft:#ffffff0d; --accent-bg:#16241c;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--green-deep);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+  a:hover{border-bottom-color:var(--green)}
+  @media (prefers-color-scheme: dark){a{color:#5fd6a8}}
+
+  /* Header */
+  header.masthead{
+    border-bottom:1px solid var(--line);background:var(--surface);
+  }
+  .masthead-inner{
+    max-width:1080px;margin:0 auto;padding:18px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  }
+  .brand{display:flex;align-items:center;gap:11px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.28rem;color:var(--ink);letter-spacing:-.01em}
+  .brand .dot{
+    width:11px;height:11px;border-radius:50%;background:var(--green);position:relative;flex:none;
+    box-shadow:0 0 0 0 rgba(29,158,117,.5);animation:pulse 2.4s infinite ease-out;
+  }
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(29,158,117,.45)}70%{box-shadow:0 0 0 9px rgba(29,158,117,0)}100%{box-shadow:0 0 0 0 rgba(29,158,117,0)}}
+  .masthead nav{display:flex;gap:20px;font-size:.92rem}
+  .masthead nav a{color:var(--ink-soft)}
+
+  /* Layout */
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:start}
+  @media (max-width:880px){.wrap{grid-template-columns:1fr;gap:0}}
+
+  /* TOC */
+  aside.toc{position:sticky;top:24px;padding-top:48px;font-size:.9rem}
+  @media (max-width:880px){aside.toc{position:static;padding-top:24px;border-bottom:1px solid var(--line)}}
+  aside.toc .toc-label{font-family:"Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--ink-soft);margin-bottom:14px}
+  aside.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+  aside.toc li{counter-increment:toc;margin:0 0 3px}
+  aside.toc a{display:flex;gap:9px;padding:5px 0;color:var(--ink-soft);border:0;line-height:1.4}
+  aside.toc a::before{content:counter(toc,decimal-leading-zero);color:var(--green);font-variant-numeric:tabular-nums;font-weight:600;flex:none}
+  aside.toc a:hover{color:var(--ink)}
+
+  /* Article */
+  main{padding:48px 0 80px;min-width:0}
+  .doc-head{margin-bottom:40px}
+  .eyebrow{font-family:"Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;color:var(--green-deep);font-weight:700;margin-bottom:10px}
+  @media (prefers-color-scheme: dark){.eyebrow{color:#5fd6a8}}
+  h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(2rem,5vw,2.9rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 18px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.86rem;color:var(--ink-soft);padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  main h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-.01em;margin:52px 0 4px;scroll-margin-top:24px;display:flex;gap:13px;align-items:baseline}
+  main h2 .num{color:var(--green);font-size:1rem;font-variant-numeric:tabular-nums;font-weight:600;flex:none}
+  main h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.08rem;margin:30px 0 2px}
+  main p,main li{max-width:var(--measure)}
+  main p{margin:14px 0}
+  main ul{margin:14px 0;padding-left:0;list-style:none}
+  main ul li{position:relative;padding-left:24px;margin:9px 0}
+  main ul li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--amber);transform:rotate(45deg)}
+  main strong{font-weight:600;color:var(--ink)}
+  .lead{font-size:1.12rem;color:var(--ink-soft);max-width:var(--measure)}
+
+  /* Callouts */
+  .note{
+    background:var(--accent-bg);border:1px solid var(--line);border-left:3px solid var(--green);
+    border-radius:var(--radius);padding:16px 20px;margin:22px 0;font-size:.96rem;
+  }
+  .note.warn{border-left-color:var(--amber)}
+  .note .note-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin-bottom:6px}
+  .ph{background:#fff3d6;color:#8a5a00;border-radius:5px;padding:1px 7px;font-size:.86em;font-weight:600;white-space:nowrap}
+  @media (prefers-color-scheme: dark){.ph{background:#3a2e0e;color:#ecc45f}}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.84em;background:var(--line-soft);border:1px solid var(--line);border-radius:5px;padding:1px 6px;color:var(--ink-soft);white-space:nowrap}
+
+  /* Table */
+  .table-scroll{overflow-x:auto;margin:20px 0;border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;font-size:.92rem;min-width:520px}
+  th,td{text-align:left;padding:13px 16px;vertical-align:top;border-bottom:1px solid var(--line-soft)}
+  th{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;color:var(--ink-soft);background:var(--accent-bg)}
+  tbody tr:last-child td{border-bottom:0}
+  td b{font-weight:600}
+
+  /* Footer */
+  footer{border-top:1px solid var(--line);background:var(--surface)}
+  .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.88rem;color:var(--ink-soft)}
+  .footer-inner a{color:var(--ink-soft)}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Wuffi</div>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/terms">Términos</a>
+      <a href="/privacy" aria-current="page">Privacidad</a>
+      <a href="/eliminar-cuenta">Eliminar cuenta</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="toc">
+    <div class="toc-label">Contenido</div>
+    <ol>
+      <li><a href="#responsable">Quién es responsable de tus datos</a></li>
+      <li><a href="#alcance">Alcance de esta política</a></li>
+      <li><a href="#datos">Qué datos tratamos</a></li>
+      <li><a href="#geo">Tu ubicación: el dato más sensible</a></li>
+      <li><a href="#permisos">Permisos que solicita la app</a></li>
+      <li><a href="#finalidades">Para qué los usamos y con qué base legal</a></li>
+      <li><a href="#terceros">Con quién los compartimos</a></li>
+      <li><a href="#transferencias">Transferencias fuera de Chile</a></li>
+      <li><a href="#conservacion">Cuánto tiempo los guardamos</a></li>
+      <li><a href="#derechos">Tus derechos sobre tus datos</a></li>
+      <li><a href="#eliminar">Cómo eliminar tu cuenta</a></li>
+      <li><a href="#seguridad">Cómo protegemos tus datos</a></li>
+      <li><a href="#menores">Menores de edad</a></li>
+      <li><a href="#cambios">Cambios a esta política</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="doc-head">
+      <div class="eyebrow">Política de Privacidad</div>
+      <h1>Tus datos, tratados con el mismo cuidado que tu privacidad en un paseo.</h1>
+      <p class="lead">Wuffi se diseñó con privacidad desde el inicio: pedimos solo lo necesario, difuminamos tu ubicación y borramos lo que deja de hacer falta. Esto explica, en concreto, qué tratamos y por qué.</p>
+      <div class="meta" style="margin-top:22px">
+        <span>Última actualización: <b><span>28 de Junio de 2026</span></b></span>
+        <span>Versión: <b>1.0</b></span>
+      </div>
+    </div>
+
+    <h2 id="responsable"><span class="num">01</span> Quién es responsable de tus datos</h2>
+    <p>El responsable del tratamiento de tus datos personales es <strong>NortiApps SpA</strong>, sociedad por acciones constituida en Chile, RUT <span>78417995-8</span>, con domicilio en <span>Antonio Bellet Nro. 193, Of. 302, Providencia, Región Metropolitana</span>. "Wuffi" es la aplicación móvil operada por NortiApps SpA. En esta política, "nosotros" o "Wuffi" se refiere a NortiApps SpA, y "tú" a la persona usuaria.</p>
+    <p>Para cualquier asunto de privacidad puedes escribirnos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>.</p>
+
+    <h2 id="alcance"><span class="num">02</span> Alcance de esta política</h2>
+    <p>Esta política aplica a la aplicación móvil Wuffi (actualmente para Android; próximamente para iOS), al sitio <strong>wuffi.nortiapps.com</strong> y a los servicios asociados. Al crear una cuenta y aceptar esta política durante el registro, autorizas el tratamiento de tus datos en los términos que aquí se describen. Donde el tratamiento se base en tu consentimiento, podrás retirarlo en cualquier momento (ver <a href="#derechos">sección 10</a>), sin que ello afecte la licitud del tratamiento previo.</p>
+
+    <h2 id="datos"><span class="num">03</span> Qué datos tratamos</h2>
+    <p>Recolectamos solo lo que la app necesita para funcionar. No pedimos RUT, dirección exacta del hogar, ni datos de pago en esta versión. Estas son las categorías:</p>
+
+    <h3>Datos de cuenta e identidad</h3>
+    <ul>
+      <li><strong>Correo electrónico</strong>, al registrarte con email/contraseña o con tu cuenta de Google (Google Sign-In).</li>
+      <li><strong>Nombre</strong> que eliges mostrar a la comunidad.</li>
+      <li><strong>Región, ciudad y comuna</strong> que indicas en tu perfil. Esto nos permite mostrarte actividad cercana.</li>
+      <li><strong>Ubicación aproximada del hogar</strong>, que <strong>se redondea en tu propio teléfono a ~1,1 km antes de enviarse</strong> a nuestros servidores: tu punto exacto nunca sale de tu dispositivo. Como refuerzo, la base de datos está configurada para rechazar y forzar el redondeo de cualquier coordenada en ese campo, de modo que ni siquiera una versión modificada de la app podría guardar tu ubicación exacta. Sirve únicamente para filtrar alertas y avisos de tu zona.</li>
+      <li>Registro de tu aceptación de los términos y la fecha en que lo hiciste.</li>
+    </ul>
+
+    <h3>Datos de tus mascotas</h3>
+    <ul>
+      <li>Nombre, raza, sexo, fecha de nacimiento (con ella calculamos la edad) y si está esterilizado/a.</li>
+      <li><strong>Foto de tu perro</strong> (opcional), que se comprime en tu teléfono antes de subirse.</li>
+    </ul>
+
+    <h3>Datos de ubicación durante los paseos</h3>
+    <p>Solo si activas el interruptor <em>"compartir ubicación"</em> al iniciar un paseo. Su tratamiento se explica en detalle en la <a href="#geo">sección 4</a>, por tratarse de un dato sensible.</p>
+
+    <h3>Contenido que publicas en la comunidad</h3>
+    <ul>
+      <li><strong>Alertas</strong> (comida en la calle, perro suelto, zona peligrosa) y <strong>avisos</strong> (perro perdido/encontrado, mala hidratación), con su categoría, descripción y, en los avisos, una foto opcional.</li>
+      <li><strong>Eventos</strong> que creas y a los que confirmas asistencia.</li>
+      <li><strong>Rutinas de paseo</strong> que registras en tu perfil.</li>
+      <li><strong>Mensajes</strong> en el chat con tus amigos. El chat usa mensajes predefinidos (no texto libre).</li>
+    </ul>
+
+    <h3>Datos sociales</h3>
+    <ul>
+      <li>Tus solicitudes de amistad y amistades aceptadas.</li>
+      <li>Usuarios que bloqueas y reportes de contenido que envías (para moderación).</li>
+    </ul>
+
+    <h3>Datos técnicos y del dispositivo</h3>
+    <ul>
+      <li><strong>Token de notificaciones (FCM)</strong> y plataforma del dispositivo, para enviarte avisos push.</li>
+      <li>Al enviar comentarios o ante un fallo de la app: <strong>modelo de dispositivo, versión del sistema operativo y versión de la app</strong>.</li>
+    </ul>
+
+    <h3>Analítica de uso (propia)</h3>
+    <p>Para entender si la app es útil y dónde hay comunidad activa, registramos <strong>cuatro eventos mínimos</strong>: abrir la app, iniciar un paseo, terminar un paseo y compartir un paseo. Cada evento guarda el tipo de evento, tu comuna en ese momento y la fecha. <strong>No usamos SDK de analítica de terceros</strong> (no Google Analytics, no Facebook). Estos datos se guardan en nuestra propia base de datos.</p>
+
+    <h3>Reportes de fallos (Firebase Crashlytics)</h3>
+    <p>Si la app falla, recibimos un reporte técnico para corregir el problema. Configuramos Crashlytics para <strong>no incluir tu nombre, tu correo, coordenadas, contenido ni contraseñas</strong>. El reporte sí incluye un <strong>identificador seudonimizado (un código UUID)</strong>, que no te identifica directamente pero nos permite agrupar fallos recurrentes de una misma cuenta. Como ese identificador podría cruzarse con tu cuenta en nuestros sistemas, lo tratamos como dato personal (seudonimizado), no como dato anónimo. Crashlytics solo opera en la versión publicada de la app, no en desarrollo.</p>
+
+    <h3>Comentarios que nos envías</h3>
+    <ul>
+      <li>Tipo de comentario (error, sugerencia, otro), una calificación de 1 a 5, tu mensaje y una captura de pantalla opcional.</li>
+    </ul>
+
+    <h2 id="geo"><span class="num">04</span> Tu ubicación: el dato más sensible</h2>
+    <p>La ubicación funciona así:</p>
+    <ul>
+      <li><strong>Es opcional y la controlas tú.</strong> La app solo accede al GPS durante un paseo si activas el interruptor "compartir ubicación". Puedes pasear sin compartir.</li>
+      <li><strong>Tu dispositivo captura tu ubicación exacta</strong> para mostrarte el mapa y registrar tu paseo. Esa posición precisa se procesa para <strong>difuminarse a un área aproximada de ~100 metros antes de ser visible para tus amigos</strong>: ellos nunca ven tu punto exacto, solo tú. Mientras el paseo está activo, tu posición precisa se guarda de forma temporal y con acceso restringido únicamente a ti.</li>
+      <li><strong>Se borra al terminar.</strong> Al finalizar el paseo, la posición en vivo se elimina. Lo que se conserva es el resumen del paseo (duración, distancia y, opcionalmente, la ruta para tu historial personal).</li>
+      <li><strong>Ajuste de la ruta a las calles (Mapbox).</strong> Si guardas la ruta para tu historial, <strong>una sola vez y después de terminar el paseo</strong>, nuestro servidor envía esa ruta (no tu posición en vivo) a Mapbox para alinearla a las calles del mapa. Mapbox actúa como <strong>encargado de tratamiento</strong>: según sus políticas públicas no vende datos personales ni construye perfiles de usuarios. Se explica en la <a href="#terceros">sección 7</a>.</li>
+      <li><strong>Conteo de actividad cercana, anónimo.</strong> En el inicio mostramos "personas paseando cerca" como un número, sin identificar a nadie, y solo si hay al menos tres personas, para que el dato no permita reconocer individuos.</li>
+      <li><strong>Tu hogar se difumina en tu propio teléfono.</strong> La ubicación de tu perfil se redondea a ~1,1 km en el dispositivo antes de enviarse, así que tu dirección exacta nunca llega a nuestros servidores.</li>
+    </ul>
+
+    <h2 id="permisos"><span class="num">05</span> Permisos que solicita la app</h2>
+    <p>Wuffi pide solo los permisos del sistema necesarios para funciones concretas, y te los solicita en el momento en que vas a usar la función, no al instalar. Puedes revocarlos cuando quieras desde los ajustes de tu teléfono (algunas funciones dejarán de operar sin ellos).</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Permiso (Android / iOS)</th><th>Para qué función</th><th>Cuándo se usa</th></tr></thead>
+        <tbody>
+          <tr><td><b>Ubicación precisa</b><br><code>ACCESS_FINE_LOCATION</code> / <i>Location When In Use</i></td><td>Registrar tu paseo, mostrar tu posición en el mapa y compartir tu área aproximada con amigos</td><td>Solo durante un paseo que tú inicias, en primer plano</td></tr>
+          <tr><td><b>Ubicación aproximada</b><br><code>ACCESS_COARSE_LOCATION</code></td><td>Mostrar actividad y contenido de tu zona</td><td>En primer plano, al usar el mapa y el inicio</td></tr>
+          <tr><td><b>Servicio en primer plano con ubicación</b><br><code>FOREGROUND_SERVICE</code> + <code>FOREGROUND_SERVICE_LOCATION</code></td><td>Seguir registrando tu paseo aunque bloquees la pantalla o cambies de app, mostrando una notificación visible "Paseo en curso"</td><td>Solo mientras un paseo está activo</td></tr>
+          <tr><td><b>Cámara</b><br><code>CAMERA</code> / <i>Camera</i></td><td>Tomar la foto de tu perro, de un paseo o de un aviso</td><td>Solo cuando eliges "tomar foto"</td></tr>
+          <tr><td><b>Fotos / galería</b><br><code>READ_MEDIA_IMAGES</code> (Android 13+) o <code>READ_EXTERNAL_STORAGE</code> / <i>Photo Library</i></td><td>Elegir una foto existente desde tu galería</td><td>Solo cuando eliges "elegir de la galería"</td></tr>
+          <tr><td><b>Notificaciones</b><br><code>POST_NOTIFICATIONS</code> (Android 13+) / <i>Notifications</i></td><td>Enviarte avisos (mensajes, alertas de tu zona, recordatorios)</td><td>Si las aceptas; configurables por tipo</td></tr>
+          <tr><td><b>Red / conexión</b><br><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code></td><td>Comunicar la app con nuestros servidores</td><td>Permanente (es necesaria para funcionar)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note">
+      <div class="note-title">Sobre la ubicación en segundo plano</div>
+      Wuffi accede a tu ubicación <strong>únicamente durante un paseo que tú inicias</strong>, nunca de forma silenciosa. Para que el registro no se corte cuando bloqueas la pantalla, usamos un <strong>servicio en primer plano con una notificación siempre visible</strong>. <strong>No solicitamos el permiso de "ubicación todo el tiempo"</strong> (<code>ACCESS_BACKGROUND_LOCATION</code> en Android / <i>Always</i> en iOS): la app no rastrea tu ubicación cuando no estás paseando.
+    </div>
+
+    <h2 id="finalidades"><span class="num">06</span> Para qué los usamos y con qué base legal</h2>
+    <p>Cada tratamiento tiene una finalidad y una base de licitud:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Para qué</th><th>Datos</th><th>Base de licitud</th></tr></thead>
+        <tbody>
+          <tr><td><b>Crear y operar tu cuenta</b> y darte el servicio principal (perfil, mascotas, comunidad, amigos)</td><td>Cuenta, mascotas, contenido, datos sociales</td><td>Ejecución del contrato (los Términos de Servicio)</td></tr>
+          <tr><td><b>Compartir tu ubicación durante paseos</b> y mostrar actividad cercana</td><td>Geolocalización (dato sensible)</td><td>Consentimiento explícito (el interruptor de compartir)</td></tr>
+          <tr><td><b>Enviarte notificaciones</b> (mensajes, alertas de tu zona, recordatorios)</td><td>Token FCM, preferencias</td><td>Consentimiento (configurable por tipo)</td></tr>
+          <tr><td><b>Seguridad, moderación y prevención de abuso</b> (reportes, bloqueos, límites anti-spam, anti-bots)</td><td>Datos sociales, técnicos</td><td>Interés legítimo y cumplimiento de obligaciones de plataforma</td></tr>
+          <tr><td><b>Entender el uso y mejorar el producto</b></td><td>Analítica propia (4 eventos), reportes de fallos</td><td>Interés legítimo (datos mínimos, sin perfilamiento)</td></tr>
+          <tr><td><b>Responder tus comentarios y soporte</b></td><td>Comentarios, datos de contacto</td><td>Interés legítimo / consentimiento</td></tr>
+          <tr><td><b>Cumplir la ley</b> y responder requerimientos de autoridad competente</td><td>Los que correspondan</td><td>Cumplimiento de obligación legal</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>No tomamos decisiones automatizadas que produzcan efectos jurídicos sobre ti ni elaboramos perfiles con esos efectos.</p>
+
+    <h2 id="terceros"><span class="num">07</span> Con quién los compartimos</h2>
+    <p><strong>No vendemos tus datos. No mostramos publicidad. No los cedemos para marketing de terceros.</strong> Para operar, nos apoyamos en proveedores tecnológicos (encargados de tratamiento) que procesan datos por cuenta nuestra y bajo nuestras instrucciones:</p>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Proveedor</th><th>Para qué</th><th>Qué datos toca</th></tr></thead>
+        <tbody>
+          <tr><td><b>Supabase</b></td><td>Base de datos, autenticación y almacenamiento (la infraestructura central)</td><td>Casi todos los datos de la app</td></tr>
+          <tr><td><b>Google Firebase</b></td><td>Notificaciones push (FCM) y reportes de fallos (Crashlytics)</td><td>Token de notificaciones, datos técnicos del fallo, identificador de cuenta</td></tr>
+          <tr><td><b>Google</b></td><td>Inicio de sesión con Google (opcional)</td><td>Verificación de tu identidad de Google</td></tr>
+          <tr><td><b>Mapbox</b></td><td>Ajustar la ruta de tus paseos a las calles del mapa (una vez, al terminar el paseo)</td><td>La geometría de la ruta de tu paseo (puntos de la trayectoria, no tu posición en vivo)</td></tr>
+          <tr><td><b>OpenStreetMap</b></td><td>Mostrar el mapa</td><td>Solicitudes de mapa (no contenido de cuenta)</td></tr>
+          <tr><td><b>Open-Meteo</b></td><td>Avisos de clima</td><td>Por zona climática, <b>no</b> por usuario individual</td></tr>
+          <tr><td><b>Resend</b></td><td>Enviarnos por correo tus comentarios de la app</td><td>Contenido del comentario</td></tr>
+          <tr><td><b>Cloudflare Turnstile</b></td><td>Protección anti-bots al registrarse o iniciar sesión</td><td>Señales técnicas del navegador (no contenido)</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>También podríamos compartir datos si la ley nos obliga, ante un requerimiento legítimo de autoridad, o en el contexto de una reorganización de la empresa (en cuyo caso se mantendrían estas mismas protecciones).</p>
+    <div class="note">
+      <div class="note-title">Sobre Mapbox y los datos de ubicación</div>
+      Como Mapbox es el único proveedor que procesa la geometría de tus rutas, lo detallamos aparte. Mapbox actúa como <strong>encargado de tratamiento</strong> bajo su acuerdo de tratamiento de datos (DPA): procesa la ruta por cuenta nuestra para devolverla ajustada a las calles. Según las políticas públicas de Mapbox, <strong>no vende datos personales y no rastrea a las personas usuarias ni construye perfiles entre sesiones</strong>; mantiene certificaciones de seguridad (SOC 2, ISO 27001 y Data Privacy Framework UE-EE. UU.) y conserva las direcciones IP por hasta 30 días. Sus servidores están en Estados Unidos, por lo que esta transferencia se rige por la <a href="#transferencias">sección 8</a>.
+    </div>
+
+    <h2 id="transferencias"><span class="num">08</span> Transferencias fuera de Chile</h2>
+    <p>Algunos de los proveedores anteriores procesan o almacenan datos en servidores ubicados fuera de Chile (por ejemplo, en Estados Unidos o la Unión Europea). Cuando eso ocurre, exigimos a cada proveedor garantías de seguridad y confidencialidad equivalentes al estándar de la ley chilena, mediante los contratos y cláusulas de protección de datos correspondientes. Si un destino no ofrece un nivel de protección adecuado, nos aseguramos de que existan garantías contractuales que justifiquen la transferencia.</p>
+
+    <h2 id="conservacion"><span class="num">09</span> Cuánto tiempo los guardamos</h2>
+    <p>Aplicamos el principio de conservar los datos solo el tiempo necesario:</p>
+    <ul>
+      <li><strong>Datos de cuenta, mascotas e historial de paseos:</strong> mientras tu cuenta esté activa.</li>
+      <li><strong>Alertas:</strong> al cumplir 24 horas dejan de mostrarse de inmediato y se eliminan de forma definitiva de nuestra base de datos dentro de <span>30</span> días.</li>
+      <li><strong>Avisos:</strong> al cumplir su plazo (3 días para perro perdido/encontrado, 7 días para hidratación) dejan de mostrarse de inmediato y se eliminan de forma definitiva dentro de <span>30</span> días.</li>
+      <li><strong>Ubicación en vivo del paseo:</strong> sus coordenadas se borran al terminar el paseo; los puntos temporales de la trayectoria también se eliminan en ese momento.</li>
+      <li><strong>Eventos:</strong> hasta su fecha o cierre.</li>
+      <li><strong>Reportes de fallos y analítica de uso:</strong> por períodos acotados, con datos mínimos.</li>
+      <li><strong>Al eliminar tu cuenta:</strong> tus datos se borran de inmediato de la base de datos activa, y de las copias de seguridad cifradas en un plazo máximo de <span>30</span> días (ver <a href="#eliminar">sección 11</a>).</li>
+    </ul>
+
+    <h2 id="derechos"><span class="num">10</span> Tus derechos sobre tus datos</h2>
+    <p>Como titular de los datos, tienes derecho a:</p>
+    <ul>
+      <li><strong>Acceso:</strong> saber qué datos tuyos tratamos y cómo.</li>
+      <li><strong>Rectificación:</strong> corregir datos inexactos o desactualizados (gran parte la editas tú mismo/a en la app).</li>
+      <li><strong>Supresión ("derecho al olvido"):</strong> pedir que eliminemos tus datos. Puedes hacerlo tú mismo/a eliminando tu cuenta.</li>
+      <li><strong>Oposición:</strong> oponerte a ciertos tratamientos.</li>
+      <li><strong>Portabilidad:</strong> recibir tus datos en un formato estructurado y de uso común.</li>
+      <li><strong>Bloqueo:</strong> solicitar la suspensión temporal del tratamiento de ciertos datos.</li>
+      <li><strong>Retirar tu consentimiento</strong> cuando el tratamiento se base en él (por ejemplo, desactivando el compartir ubicación o las notificaciones).</li>
+    </ul>
+    <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:privacidad@nortiapps.com">privacidad@nortiapps.com</a>. Responderemos en los plazos que fija la ley. Si consideras que no respetamos tus derechos, puedes reclamar ante la <strong>Agencia de Protección de Datos Personales</strong> de Chile.</p>
+
+    <h2 id="eliminar"><span class="num">11</span> Cómo eliminar tu cuenta</h2>
+    <p>Puedes borrar tu cuenta de forma permanente, sin período de espera, desde la propia app: <strong>Perfil → Eliminar cuenta</strong>. El borrado elimina tu perfil, tus mascotas, tu contenido, tus mensajes y tus fotos.</p>
+    <p><strong>Qué significa "borrado" en la práctica:</strong> tus datos se eliminan de inmediato y de forma permanente de la <strong>base de datos activa</strong> (es una acción que no se puede deshacer desde la app). Por razones de seguridad y continuidad del servicio, nuestra infraestructura mantiene <strong>copias de seguridad cifradas</strong> durante un máximo de <span>30</span> días, tras lo cual esas copias se sobrescriben y tus datos desaparecen también de ellas. Durante esa ventana, las copias solo se usarían para recuperar el sistema ante un incidente grave, no para uso ordinario.</p>
+    <p>Si no puedes acceder a la app, también puedes solicitar la eliminación escribiendo a <a href="mailto:privacidad@nortiapps.com">privacidad@nortiapps.com</a> desde el correo asociado a tu cuenta. Más información en <a href="/eliminar-cuenta">wuffi.nortiapps.com/eliminar-cuenta</a>.</p>
+
+    <h2 id="seguridad"><span class="num">12</span> Cómo protegemos tus datos</h2>
+    <p>La seguridad es parte del diseño, no un parche posterior. Entre otras medidas:</p>
+    <ul>
+      <li><strong>Control de acceso por filas (RLS):</strong> cada usuario solo puede acceder a sus propios datos; las reglas se aplican en el servidor, no solo en la app.</li>
+      <li><strong>Minimización de la geolocalización:</strong> hogar redondeado a ~1,1 km; ubicación de paseo difuminada a ~100 m para amigos y borrada al terminar.</li>
+      <li><strong>Aislamiento de datos sensibles</strong> como el token de notificaciones, y registros técnicos sin coordenadas ni contenido.</li>
+      <li><strong>Cifrado de la información</strong> en tránsito (TLS entre la app y nuestros servidores) y almacenamiento en infraestructura con cifrado en reposo.</li>
+      <li><strong>Protección anti-bots y límites anti-abuso</strong> en el registro y las acciones sensibles.</li>
+    </ul>
+    <p>Si llegara a ocurrir una vulneración de seguridad que afecte tus datos personales y represente un riesgo para ti, te lo notificaremos y daremos aviso a la Agencia de Protección de Datos en los plazos legales (dentro de 72 horas desde que tengamos conocimiento del incidente).</p>
+
+    <h2 id="menores"><span class="num">13</span> Menores de edad</h2>
+    <p>Wuffi está dirigida a <strong>personas mayores de 18 años</strong>. Por su naturaleza (geolocalización y comunidad de vecinos), no está pensada para menores y no recolectamos datos de menores de edad de forma consciente. Si crees que un menor creó una cuenta, escríbenos a <a href="mailto:privacidad@nortiapps.com">privacidad@nortiapps.com</a> y la eliminaremos.</p>
+
+    <h2 id="cambios"><span class="num">14</span> Cambios a esta política</h2>
+    <p>Si actualizamos esta política, cambiaremos la fecha de "última actualización" y, ante cambios importantes, te avisaremos dentro de la app. El uso continuado de Wuffi tras la actualización implica que conoces la versión vigente.</p>
+
+    <h2 id="contacto"><span class="num">15</span> Contacto</h2>
+    <p>¿Dudas sobre privacidad? Escríbenos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>.<br>
+    <strong>NortiApps SpA</strong> — RUT <span>78417995-8</span> — <span>Antonio Bellet Nro. 193, Of. 302, Providencia, Región Metropolitana, Chile</span>.</p>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span>2026</span> NortiApps SpA · Wuffi</div>
+    <div class="footer-links">
+      <a href="/">Inicio</a>
+      <a href="/terms">Términos de Servicio</a>
+      <a href="/privacy">Política de Privacidad</a>
+      <a href="/eliminar-cuenta">Eliminar cuenta</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

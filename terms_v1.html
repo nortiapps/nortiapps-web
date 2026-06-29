@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Términos de Servicio · Wuffi</title>
+<meta name="description" content="Términos y Condiciones de uso de la aplicación Wuffi, operada por NortiApps SpA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green:#1D9E75; --green-deep:#147a59; --amber:#EF9F27;
+    --bg:#fbfaf7; --surface:#ffffff; --ink:#1c2420; --ink-soft:#566159;
+    --line:#e7e4dc; --line-soft:#f0eee8; --accent-bg:#f0f8f4;
+    --shadow:0 1px 2px rgba(28,36,32,.04),0 8px 28px rgba(28,36,32,.05);
+    --radius:14px; --measure:68ch;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#10130f; --surface:#171b15; --ink:#e8ece6; --ink-soft:#9aa79c;
+      --line:#28301f33; --line-soft:#ffffff0d; --accent-bg:#16241c;
+      --shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);
+    }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,sans-serif;
+    font-size:16.5px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--green-deep);text-decoration:none;border-bottom:1px solid transparent;transition:border-color .15s}
+  a:hover{border-bottom-color:var(--green)}
+  @media (prefers-color-scheme: dark){a{color:#5fd6a8}}
+
+  header.masthead{border-bottom:1px solid var(--line);background:var(--surface)}
+  .masthead-inner{max-width:1080px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:11px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.28rem;color:var(--ink);letter-spacing:-.01em}
+  .brand .dot{width:11px;height:11px;border-radius:50%;background:var(--green);position:relative;flex:none;box-shadow:0 0 0 0 rgba(29,158,117,.5);animation:pulse 2.4s infinite ease-out}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(29,158,117,.45)}70%{box-shadow:0 0 0 9px rgba(29,158,117,0)}100%{box-shadow:0 0 0 0 rgba(29,158,117,0)}}
+  .masthead nav{display:flex;gap:20px;font-size:.92rem}
+  .masthead nav a{color:var(--ink-soft)}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:240px 1fr;gap:48px;align-items:start}
+  @media (max-width:880px){.wrap{grid-template-columns:1fr;gap:0}}
+
+  aside.toc{position:sticky;top:24px;padding-top:48px;font-size:.9rem}
+  @media (max-width:880px){aside.toc{position:static;padding-top:24px;border-bottom:1px solid var(--line)}}
+  aside.toc .toc-label{font-family:"Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.7rem;color:var(--ink-soft);margin-bottom:14px}
+  aside.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+  aside.toc li{counter-increment:toc;margin:0 0 3px}
+  aside.toc a{display:flex;gap:9px;padding:5px 0;color:var(--ink-soft);border:0;line-height:1.4}
+  aside.toc a::before{content:counter(toc,decimal-leading-zero);color:var(--green);font-variant-numeric:tabular-nums;font-weight:600;flex:none}
+  aside.toc a:hover{color:var(--ink)}
+
+  main{padding:48px 0 80px;min-width:0}
+  .doc-head{margin-bottom:40px}
+  .eyebrow{font-family:"Bricolage Grotesque",sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:.74rem;color:var(--green-deep);font-weight:700;margin-bottom:10px}
+  @media (prefers-color-scheme: dark){.eyebrow{color:#5fd6a8}}
+  h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(2rem,5vw,2.9rem);line-height:1.04;letter-spacing:-.02em;margin:0 0 18px}
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.86rem;color:var(--ink-soft);padding-bottom:22px;border-bottom:1px solid var(--line)}
+  .meta b{color:var(--ink);font-weight:600}
+
+  main h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:1.5rem;letter-spacing:-.01em;margin:52px 0 4px;scroll-margin-top:24px;display:flex;gap:13px;align-items:baseline}
+  main h2 .num{color:var(--green);font-size:1rem;font-variant-numeric:tabular-nums;font-weight:600;flex:none}
+  main h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:1.08rem;margin:30px 0 2px}
+  main p,main li{max-width:var(--measure)}
+  main p{margin:14px 0}
+  main ul{margin:14px 0;padding-left:0;list-style:none}
+  main ul li{position:relative;padding-left:24px;margin:9px 0}
+  main ul li::before{content:"";position:absolute;left:4px;top:.62em;width:7px;height:7px;border-radius:2px;background:var(--amber);transform:rotate(45deg)}
+  main strong{font-weight:600;color:var(--ink)}
+  .lead{font-size:1.12rem;color:var(--ink-soft);max-width:var(--measure)}
+
+  .note{background:var(--accent-bg);border:1px solid var(--line);border-left:3px solid var(--green);border-radius:var(--radius);padding:16px 20px;margin:22px 0;font-size:.96rem}
+  .note.warn{border-left-color:var(--amber)}
+  .note.strong-warn{border-left-color:var(--amber);background:#fff8ec}
+  @media (prefers-color-scheme: dark){.note.strong-warn{background:#241c0e}}
+  .note .note-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:.9rem;text-transform:uppercase;letter-spacing:.06em;color:var(--ink);margin-bottom:6px}
+  .ph{background:#fff3d6;color:#8a5a00;border-radius:5px;padding:1px 7px;font-size:.86em;font-weight:600;white-space:nowrap}
+  @media (prefers-color-scheme: dark){.ph{background:#3a2e0e;color:#ecc45f}}
+
+  footer{border-top:1px solid var(--line);background:var(--surface)}
+  .footer-inner{max-width:1080px;margin:0 auto;padding:34px 24px;display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:.88rem;color:var(--ink-soft)}
+  .footer-inner a{color:var(--ink-soft)}
+  .footer-links{display:flex;gap:22px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead-inner">
+    <div class="brand"><span class="dot" aria-hidden="true"></span> Wuffi</div>
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/terms" aria-current="page">Términos</a>
+      <a href="/privacy">Privacidad</a>
+      <a href="/eliminar-cuenta">Eliminar cuenta</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+  <aside class="toc">
+    <div class="toc-label">Contenido</div>
+    <ol>
+      <li><a href="#quienes">Quiénes somos</a></li>
+      <li><a href="#aceptacion">Aceptación de los términos</a></li>
+      <li><a href="#requisitos">Requisitos para usar Wuffi</a></li>
+      <li><a href="#servicio">Qué es Wuffi</a></li>
+      <li><a href="#cuenta">Tu cuenta</a></li>
+      <li><a href="#conducta">Uso aceptable</a></li>
+      <li><a href="#contenido">Tu contenido y la moderación</a></li>
+      <li><a href="#alertas">Alertas y avisos: léelos con criterio</a></li>
+      <li><a href="#ubicacion">Compartir ubicación</a></li>
+      <li><a href="#premium">Funciones de pago</a></li>
+      <li><a href="#pi">Propiedad intelectual</a></li>
+      <li><a href="#terceros">Servicios de terceros</a></li>
+      <li><a href="#disponibilidad">Disponibilidad y garantías</a></li>
+      <li><a href="#responsabilidad">Limitación de responsabilidad</a></li>
+      <li><a href="#indemnidad">Indemnidad</a></li>
+      <li><a href="#suspension">Suspensión y término</a></li>
+      <li><a href="#cambios">Cambios a los términos</a></li>
+      <li><a href="#ley">Ley aplicable</a></li>
+      <li><a href="#ios">Condiciones para usuarios de iOS</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ol>
+  </aside>
+
+  <main>
+    <div class="doc-head">
+      <div class="eyebrow">Términos de Servicio</div>
+      <h1>Las reglas del juego para una comunidad de dueños de perros.</h1>
+      <p class="lead">Estos términos explican qué ofrece Wuffi, qué esperamos de ti y qué puedes esperar de nosotros. Están escritos para que se entiendan, no para esconder letra chica.</p>
+      <div class="meta" style="margin-top:22px">
+        <span>Última actualización: <b><span>28 de Junio de 2026</span></b></span>
+        <span>Versión: <b>1.0</b></span>
+      </div>
+    </div>
+
+    <h2 id="quienes"><span class="num">01</span> Quiénes somos</h2>
+    <p>Wuffi es una aplicación móvil operada por <strong>NortiApps SpA</strong>, RUT <span>78417995-8</span>, con domicilio en <span>Antonio Bellet Nro. 193, Of. 302, Providencia, Región Metropolitana, Chile</span> ("NortiApps", "nosotros"). Estos Términos de Servicio (los "Términos") rigen tu uso de la app Wuffi y del sitio wuffi.nortiapps.com (el "Servicio").</p>
+
+    <h2 id="aceptacion"><span class="num">02</span> Aceptación de los términos</h2>
+    <p>Al crear una cuenta, marcas tu aceptación de estos Términos y de la <a href="/privacy">Política de Privacidad</a>. Si no estás de acuerdo con ellos, no uses el Servicio. Si usas Wuffi en nombre de otra persona u organización, declaras tener facultad para aceptarlos por ella.</p>
+
+    <h2 id="requisitos"><span class="num">03</span> Requisitos para usar Wuffi</h2>
+    <ul>
+      <li>Ser <strong>mayor de 18 años</strong>. Por su naturaleza (geolocalización y comunidad de vecinos), Wuffi no está dirigida a menores.</li>
+      <li>Entregar información veraz al registrarte y mantenerla actualizada.</li>
+      <li>Usar el Servicio conforme a la ley chilena y a estos Términos.</li>
+    </ul>
+
+    <h2 id="servicio"><span class="num">04</span> Qué es Wuffi</h2>
+    <p>Wuffi es una plataforma comunitaria para dueños de perros en Chile. Te permite registrar a tus mascotas, registrar paseos y su historial, compartir tu actividad con amigos, publicar y leer alertas y avisos de tu zona, crear eventos y conectar con otros dueños cercanos. El uso de Wuffi es <strong>gratuito</strong> en su versión actual; en el futuro podríamos ofrecer funciones de pago opcionales (ver <a href="#premium">sección 10</a>).</p>
+    <p>Wuffi es una herramienta de comunidad y de registro personal. <strong>No es un servicio veterinario, de emergencia, de seguridad ni de rescate de mascotas</strong>, y no sustituye el juicio de un profesional ni el contacto con las autoridades cuando corresponda.</p>
+
+    <h2 id="cuenta"><span class="num">05</span> Tu cuenta</h2>
+    <ul>
+      <li>Eres responsable de mantener la confidencialidad de tus credenciales y de toda actividad en tu cuenta.</li>
+      <li>Puedes registrarte con correo y contraseña o con tu cuenta de Google.</li>
+      <li>Avísanos de inmediato si detectas un uso no autorizado de tu cuenta.</li>
+      <li>Puedes eliminar tu cuenta en cualquier momento desde <strong>Perfil → Eliminar cuenta</strong>.</li>
+    </ul>
+
+    <h2 id="conducta"><span class="num">06</span> Uso aceptable</h2>
+    <p>Al usar Wuffi, te comprometes a <strong>no</strong>:</p>
+    <ul>
+      <li>Publicar contenido falso, engañoso, ofensivo, discriminatorio, violento o ilegal.</li>
+      <li>Acosar, suplantar, amenazar o intimidar a otras personas.</li>
+      <li>Usar la ubicación de otros usuarios para seguirlos, vigilarlos o contactarlos sin su consentimiento.</li>
+      <li>Publicar datos personales de terceros sin autorización.</li>
+      <li>Hacer spam, crear cuentas falsas o automatizar el uso del Servicio con bots.</li>
+      <li>Intentar vulnerar la seguridad de la plataforma, acceder a datos ajenos o sortear los controles de la app.</li>
+      <li>Usar Wuffi con fines comerciales no autorizados.</li>
+    </ul>
+    <p>El incumplimiento puede llevar a ocultar contenido, suspender o eliminar tu cuenta (ver <a href="#suspension">sección 16</a>).</p>
+
+    <h2 id="contenido"><span class="num">07</span> Tu contenido y la moderación</h2>
+    <p>Tú conservas la titularidad del contenido que publicas (fotos, alertas, avisos, eventos, mensajes). Al publicarlo, nos otorgas una <strong>licencia mundial, no exclusiva, libre de regalías (royalty-free), transferible y sublicenciable únicamente a nuestros proveedores de infraestructura</strong> (por ejemplo, servidores de alojamiento y redes de distribución de contenido o CDN), con el <strong>único fin</strong> de alojar, procesar, almacenar, mostrar y distribuir tu contenido dentro del Servicio para hacerlo funcionar. Esta licencia termina cuando eliminas el contenido o tu cuenta, salvo: (i) copias que debamos conservar por obligación legal; (ii) contenido que ya hayas compartido y que otros usuarios u terceros hayan conservado o redistribuido fuera de nuestro control; y (iii) copias de seguridad cifradas, que se sobrescriben dentro de los plazos indicados en la <a href="/privacy#eliminar">Política de Privacidad</a>.</p>
+    <p>Eres responsable del contenido que publicas. Para mantener la comunidad sana contamos con herramientas de moderación:</p>
+    <ul>
+      <li><strong>Reportar contenido</strong> inapropiado. Al acumular varios reportes, el contenido se oculta automáticamente para revisión.</li>
+      <li><strong>Bloquear usuarios</strong> para dejar de recibir sus mensajes.</li>
+      <li><strong>Filtros y límites</strong> anti-spam y anti-groserías.</li>
+    </ul>
+    <p>Podemos ocultar o eliminar contenido que infrinja estos Términos, sin que ello implique que revisamos todo el contenido publicado.</p>
+
+    <h2 id="alertas"><span class="num">08</span> Alertas y avisos: léelos con criterio</h2>
+    <div class="note strong-warn">
+      <div class="note-title">Importante</div>
+      Las alertas y avisos los publican otros usuarios de la comunidad. <strong>Wuffi no verifica ni garantiza su veracidad, exactitud, vigencia ni utilidad.</strong> Son aportes vecinales, no información oficial.
+    </div>
+    <p>Esto significa que:</p>
+    <ul>
+      <li>Una alerta de "comida en la calle", "perro suelto" o "zona peligrosa" es la apreciación de un usuario, que puede estar equivocada, desactualizada o ser malintencionada.</li>
+      <li>Debes usar tu propio criterio antes de actuar sobre cualquier alerta o aviso.</li>
+      <li>Ante una emergencia real (un animal en peligro, una situación de riesgo, un delito), contacta a las autoridades, a un veterinario u otro servicio competente. Wuffi no reemplaza esos servicios.</li>
+      <li>No nos hacemos responsables de decisiones que tomes basándote en contenido publicado por otros usuarios.</li>
+    </ul>
+
+    <h2 id="ubicacion"><span class="num">09</span> Compartir ubicación</h2>
+    <p>Compartir tu ubicación durante un paseo es <strong>opcional</strong> y lo activas tú. Cuando lo haces, tus amigos pueden ver un <strong>área aproximada</strong> de tu posición (no tu punto exacto), según se explica en la <a href="/privacy#geo">Política de Privacidad</a>. Eres responsable de decidir cuándo compartir tu ubicación y con quién eres amigo/a en la app. Puedes desactivar el compartir en cualquier momento.</p>
+
+    <h2 id="premium"><span class="num">10</span> Funciones de pago</h2>
+    <p>La versión actual de Wuffi es gratuita. Si en el futuro habilitamos funciones premium o suscripciones, te informaremos su precio y condiciones antes de cualquier cobro, y se cobrarán a través de la tienda de aplicaciones correspondiente, sujetas también a las políticas de dicha tienda. Estos Términos se actualizarán para reflejar esas condiciones.</p>
+
+    <h2 id="pi"><span class="num">11</span> Propiedad intelectual</h2>
+    <p>La marca "Wuffi", el logotipo, el diseño, el código y los demás elementos del Servicio son de propiedad de NortiApps SpA o de sus licenciantes, y están protegidos por la ley. Estos Términos no te transfieren ningún derecho sobre ellos, más allá del uso del Servicio conforme a lo aquí establecido.</p>
+
+    <h2 id="terceros"><span class="num">12</span> Servicios de terceros</h2>
+    <p>Wuffi se apoya en servicios de terceros (mapas, notificaciones, autenticación, entre otros). El uso de esos servicios puede estar sujeto a sus propios términos. No somos responsables del funcionamiento, contenido ni políticas de servicios de terceros.</p>
+
+    <h2 id="disponibilidad"><span class="num">13</span> Disponibilidad y garantías</h2>
+    <p>El Servicio se ofrece <strong>"tal cual" y "según disponibilidad"</strong>. Hacemos un esfuerzo razonable por mantener Wuffi funcionando bien, pero <strong>no garantizamos</strong> que esté siempre disponible, libre de errores o interrupciones, ni que la información de la comunidad sea exacta. Podemos modificar, suspender o discontinuar funciones del Servicio, procurando avisar cuando sea razonable.</p>
+
+    <h2 id="responsabilidad"><span class="num">14</span> Limitación de responsabilidad</h2>
+    <p>En la máxima medida permitida por la ley, NortiApps SpA no será responsable por daños indirectos, incidentales o consecuenciales derivados del uso o la imposibilidad de uso del Servicio, ni por el contenido publicado por otros usuarios, ni por decisiones que tomes basándote en alertas, avisos o cualquier información de la comunidad.</p>
+    <p>Nada en estos Términos limita responsabilidades que, conforme a la ley chilena, no puedan limitarse (por ejemplo, las derivadas de dolo o de los derechos del consumidor que correspondan).</p>
+
+    <h2 id="indemnidad"><span class="num">15</span> Indemnidad</h2>
+    <p>Aceptas <strong>defender, indemnizar y mantener indemne</strong> a NortiApps SpA, sus socios, directores, empleados y colaboradores frente a cualquier reclamación, demanda, pérdida, daño, responsabilidad, multa o gasto (incluidos honorarios razonables de abogados y costas judiciales) que tenga su origen en, o se relacione con: (i) tu uso del Servicio; (ii) el contenido que publicas o compartes (por ejemplo, fotos de mascotas que no te pertenecen, información falsa o difamatoria en una alerta o aviso, o datos personales de terceros publicados sin autorización); (iii) tu infracción de estos Términos o de la ley; o (iv) la vulneración de derechos de cualquier tercero. Esta obligación subsiste tras el término de tu cuenta. Nada en esta cláusula afecta los derechos que la ley chilena reconozca de manera irrenunciable a los consumidores.</p>
+
+    <h2 id="suspension"><span class="num">16</span> Suspensión y término</h2>
+    <p>Puedes dejar de usar Wuffi y eliminar tu cuenta cuando quieras. Nosotros podemos suspender o terminar tu acceso si incumples estos Términos, si tu uso pone en riesgo a otros usuarios o al Servicio, o si la ley nos lo exige. Cuando sea razonable, te avisaremos.</p>
+
+    <h2 id="cambios"><span class="num">17</span> Cambios a los términos</h2>
+    <p>Podemos actualizar estos Términos. Ante cambios relevantes, te avisaremos dentro de la app y actualizaremos la fecha de "última actualización". El uso continuado del Servicio tras la actualización implica que aceptas la versión vigente.</p>
+
+    <h2 id="ley"><span class="num">18</span> Ley aplicable y jurisdicción</h2>
+    <p>Estos Términos se rigen por las leyes de la República de Chile. Cualquier controversia se someterá a los tribunales ordinarios de justicia con competencia en ciudad de Santiago / comuna de Providencia, sin perjuicio de los derechos que la ley reconozca a los consumidores para recurrir ante la autoridad o tribunal que corresponda.</p>
+
+    <h2 id="ios"><span class="num">19</span> Condiciones para usuarios de iOS (App Store)</h2>
+    <p>Si descargaste Wuffi desde la App Store de Apple, además de lo anterior aplican estas condiciones, exigidas por Apple Inc. ("Apple"):</p>
+    <ul>
+      <li>Estos Términos son un acuerdo <strong>entre tú y NortiApps SpA únicamente, no con Apple</strong>. NortiApps, y no Apple, es responsable de Wuffi y de su contenido.</li>
+      <li>La licencia de uso de Wuffi es <strong>no transferible</strong> y limitada a dispositivos de la marca Apple que poseas o controles, conforme a las Reglas de Uso de la App Store.</li>
+      <li><strong>Apple no tiene ninguna obligación de prestar mantenimiento ni soporte</strong> respecto de Wuffi. El soporte lo presta NortiApps a través de <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>.</li>
+      <li>En la medida máxima permitida por la ley, <strong>Apple no otorga garantía alguna</strong> sobre Wuffi. Si la app no cumple una garantía aplicable, podrás notificarlo a Apple y Apple te reembolsará el precio de compra (si lo hubo); fuera de eso, Apple no tendrá ninguna otra obligación de garantía.</li>
+      <li>NortiApps, y no Apple, es responsable de atender cualquier <strong>reclamación</strong> relativa a Wuffi (responsabilidad por el producto, incumplimiento de requisitos legales o regulatorios, protección al consumidor y reclamos por infracción de propiedad intelectual).</li>
+      <li>Declaras que no te encuentras en un país sujeto a embargo del gobierno de EE. UU. ni en listas de partes prohibidas, según corresponda.</li>
+      <li><strong>Apple y sus filiales son terceros beneficiarios</strong> de estos Términos y, una vez que los aceptas, tendrán el derecho de exigir su cumplimiento frente a ti como terceros beneficiarios.</li>
+    </ul>
+
+    <h2 id="contacto"><span class="num">20</span> Contacto</h2>
+    <p>¿Preguntas sobre estos Términos? Escríbenos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>.<br>
+    <strong>NortiApps SpA</strong> — RUT <span>78417995-8</span> — <span>Antonio Bellet Nro. 193, Of. 302, Providencia, Región Metropolitana, Chile</span>.</p>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div>© <span>2026</span> NortiApps SpA · Wuffi</div>
+    <div class="footer-links">
+      <a href="/">Inicio</a>
+      <a href="/terms">Términos de Servicio</a>
+      <a href="/privacy">Política de Privacidad</a>
+      <a href="/eliminar-cuenta">Eliminar cuenta</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
