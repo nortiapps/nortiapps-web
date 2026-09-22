@@ -137,6 +137,7 @@
       <li><a href="#permisos">Permisos que solicita la app</a></li>
       <li><a href="#finalidades">Para qué los usamos y con qué base legal</a></li>
       <li><a href="#terceros">Con quién los compartimos</a></li>
+      <li><a href="#negocios">Datos de los negocios del directorio</a></li>
       <li><a href="#transferencias">Transferencias fuera de Chile</a></li>
       <li><a href="#conservacion">Cuánto tiempo los guardamos</a></li>
       <li><a href="#derechos">Tus derechos sobre tus datos</a></li>
@@ -154,8 +155,8 @@
       <h1>Tus datos, tratados con el mismo cuidado que tu privacidad en un paseo.</h1>
       <p class="lead">Wuffi se diseñó con privacidad desde el inicio: pedimos solo lo necesario, difuminamos tu ubicación y borramos lo que deja de hacer falta. Esto explica, en concreto, qué tratamos y por qué.</p>
       <div class="meta" style="margin-top:22px">
-        <span>Última actualización: <b><span>28 de Junio de 2026</span></b></span>
-        <span>Versión: <b>1.0</b></span>
+        <span>Última actualización: <b><span>22 de septiembre de 2026</span></b></span>
+        <span>Versión: <b>1.1</b></span>
       </div>
     </div>
 
@@ -164,7 +165,7 @@
     <p>Para cualquier asunto de privacidad puedes escribirnos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>.</p>
 
     <h2 id="alcance"><span class="num">02</span> Alcance de esta política</h2>
-    <p>Esta política aplica a la aplicación móvil Wuffi (actualmente para Android; próximamente para iOS), al sitio <strong>wuffi.nortiapps.com</strong> y a los servicios asociados. Al crear una cuenta y aceptar esta política durante el registro, autorizas el tratamiento de tus datos en los términos que aquí se describen. Donde el tratamiento se base en tu consentimiento, podrás retirarlo en cualquier momento (ver <a href="#derechos">sección 10</a>), sin que ello afecte la licitud del tratamiento previo.</p>
+    <p>Esta política aplica a la aplicación móvil Wuffi (actualmente para Android; próximamente para iOS), al sitio <strong>wuffi.nortiapps.com</strong> y a los servicios asociados. Al crear una cuenta y aceptar esta política durante el registro, autorizas el tratamiento de tus datos en los términos que aquí se describen. Donde el tratamiento se base en tu consentimiento, podrás retirarlo en cualquier momento (ver <a href="#derechos">sección 11</a>), sin que ello afecte la licitud del tratamiento previo.</p>
 
     <h2 id="datos"><span class="num">03</span> Qué datos tratamos</h2>
     <p>Recolectamos solo lo que la app necesita para funcionar. No pedimos RUT, dirección exacta del hogar, ni datos de pago en esta versión. Estas son las categorías:</p>
@@ -209,6 +210,11 @@
 
     <h3>Analítica de uso (propia)</h3>
     <p>Para entender si la app es útil y dónde hay comunidad activa, registramos <strong>cuatro eventos mínimos</strong>: abrir la app, iniciar un paseo, terminar un paseo y compartir un paseo. Cada evento guarda el tipo de evento, tu comuna en ese momento y la fecha. <strong>No usamos SDK de analítica de terceros</strong> (no Google Analytics, no Facebook). Estos datos se guardan en nuestra propia base de datos.</p>
+
+    <h3>Uso del directorio de Lugares</h3>
+    <p>Cuando abres la ficha de un negocio del directorio o tocas uno de sus botones de contacto, registramos ese hecho para poder informar al negocio cuánto interés genera su ficha. Guardamos el <strong>identificador del negocio, el tipo de acción</strong> (abrir la ficha, tocar el teléfono, tocar WhatsApp, pedir cómo llegar, ver un código de beneficio), <strong>la fecha</strong> y <strong>tu identificador de cuenta</strong>. Repetir la misma acción sobre el mismo negocio dentro de una hora no se vuelve a registrar.</p>
+    <p>El negocio <strong>nunca recibe tu identidad</strong>: solo ve totales del mes y el número de personas distintas, sin nombres, sin correos y sin identificadores. Ver <a href="#terceros">sección 7</a>.</p>
+    <p>Consultar el directorio <strong>no le informa nada al negocio en tiempo real</strong> ni le entrega tu ubicación.</p>
 
     <h3>Reportes de fallos (Firebase Crashlytics)</h3>
     <p>Si la app falla, recibimos un reporte técnico para corregir el problema. Configuramos Crashlytics para <strong>no incluir tu nombre, tu correo, coordenadas, contenido ni contraseñas</strong>. El reporte sí incluye un <strong>identificador seudonimizado (un código UUID)</strong>, que no te identifica directamente pero nos permite agrupar fallos recurrentes de una misma cuenta. Como ese identificador podría cruzarse con tu cuenta en nuestros sistemas, lo tratamos como dato personal (seudonimizado), no como dato anónimo. Crashlytics solo opera en la versión publicada de la app, no en desarrollo.</p>
@@ -261,6 +267,7 @@
           <tr><td><b>Enviarte notificaciones</b> (mensajes, alertas de tu zona, recordatorios)</td><td>Token FCM, preferencias</td><td>Consentimiento (configurable por tipo)</td></tr>
           <tr><td><b>Seguridad, moderación y prevención de abuso</b> (reportes, bloqueos, límites anti-spam, anti-bots)</td><td>Datos sociales, técnicos</td><td>Interés legítimo y cumplimiento de obligaciones de plataforma</td></tr>
           <tr><td><b>Entender el uso y mejorar el producto</b></td><td>Analítica propia (4 eventos), reportes de fallos</td><td>Interés legítimo (datos mínimos, sin perfilamiento)</td></tr>
+          <tr><td><b>Mostrar el directorio de negocios cercanos</b> y medir el interés que genera cada ficha, para informar al negocio en forma agregada</td><td>Comuna del perfil, interacciones con fichas (ver <a href="#datos">sección 3</a>)</td><td>Interés legítimo (sostener el directorio; el negocio recibe solo totales, nunca tu identidad)</td></tr>
           <tr><td><b>Responder tus comentarios y soporte</b></td><td>Comentarios, datos de contacto</td><td>Interés legítimo / consentimiento</td></tr>
           <tr><td><b>Cumplir la ley</b> y responder requerimientos de autoridad competente</td><td>Los que correspondan</td><td>Cumplimiento de obligación legal</td></tr>
         </tbody>
@@ -278,7 +285,8 @@
           <tr><td><b>Google Firebase</b></td><td>Notificaciones push (FCM) y reportes de fallos (Crashlytics)</td><td>Token de notificaciones, datos técnicos del fallo, identificador de cuenta</td></tr>
           <tr><td><b>Google</b></td><td>Inicio de sesión con Google (opcional)</td><td>Verificación de tu identidad de Google</td></tr>
           <tr><td><b>Mapbox</b></td><td>Ajustar la ruta de tus paseos a las calles del mapa (una vez, al terminar el paseo)</td><td>La geometría de la ruta de tu paseo (puntos de la trayectoria, no tu posición en vivo)</td></tr>
-          <tr><td><b>OpenStreetMap</b></td><td>Mostrar el mapa</td><td>Solicitudes de mapa (no contenido de cuenta)</td></tr>
+          <tr><td><b>OpenStreetMap</b></td><td>Mostrar el mapa y, como fuente abierta, alimentar el directorio de Lugares</td><td>Solicitudes de mapa (no contenido de cuenta). Como fuente del directorio, <b>no recibe datos tuyos</b></td></tr>
+          <tr><td><b>Overture Maps Foundation</b></td><td>Fuente abierta de la que se construye el directorio de Lugares</td><td>Ninguno: es una descarga de datos de negocios hecha por nosotros, <b>no recibe datos tuyos</b></td></tr>
           <tr><td><b>Open-Meteo</b></td><td>Avisos de clima</td><td>Por zona climática, <b>no</b> por usuario individual</td></tr>
           <tr><td><b>Resend</b></td><td>Enviarnos por correo tus comentarios de la app</td><td>Contenido del comentario</td></tr>
           <tr><td><b>Cloudflare Turnstile</b></td><td>Protección anti-bots al registrarse o iniciar sesión</td><td>Señales técnicas del navegador (no contenido)</td></tr>
@@ -287,14 +295,48 @@
     </div>
     <p>También podríamos compartir datos si la ley nos obliga, ante un requerimiento legítimo de autoridad, o en el contexto de una reorganización de la empresa (en cuyo caso se mantendrían estas mismas protecciones).</p>
     <div class="note">
+      <div class="note-title">Qué recibe un negocio partner</div>
+      A los negocios con los que mantenemos un acuerdo comercial les entregamos un <strong>reporte mensual con cifras agregadas</strong> de su propia ficha: cuántas veces se abrió, cuántas veces se tocó su teléfono, su WhatsApp o "cómo llegar", cuántos códigos de beneficio se generaron y cuántas <strong>personas distintas</strong> hubo en total. <strong>No entregamos nombres, correos, perfiles, identificadores ni ubicaciones de ninguna persona usuaria</strong>, y no vendemos ni cedemos tus datos a esos negocios. Si decides canjear un beneficio, eres tú quien muestra el código en el local: esa interacción ocurre fuera de la app.
+    </div>
+    <div class="note">
       <div class="note-title">Sobre Mapbox y los datos de ubicación</div>
-      Como Mapbox es el único proveedor que procesa la geometría de tus rutas, lo detallamos aparte. Mapbox actúa como <strong>encargado de tratamiento</strong> bajo su acuerdo de tratamiento de datos (DPA): procesa la ruta por cuenta nuestra para devolverla ajustada a las calles. Según las políticas públicas de Mapbox, <strong>no vende datos personales y no rastrea a las personas usuarias ni construye perfiles entre sesiones</strong>; mantiene certificaciones de seguridad (SOC 2, ISO 27001 y Data Privacy Framework UE-EE. UU.) y conserva las direcciones IP por hasta 30 días. Sus servidores están en Estados Unidos, por lo que esta transferencia se rige por la <a href="#transferencias">sección 8</a>.
+      Como Mapbox es el único proveedor que procesa la geometría de tus rutas, lo detallamos aparte. Mapbox actúa como <strong>encargado de tratamiento</strong> bajo su acuerdo de tratamiento de datos (DPA): procesa la ruta por cuenta nuestra para devolverla ajustada a las calles. Según las políticas públicas de Mapbox, <strong>no vende datos personales y no rastrea a las personas usuarias ni construye perfiles entre sesiones</strong>; mantiene certificaciones de seguridad (SOC 2, ISO 27001 y Data Privacy Framework UE-EE. UU.) y conserva las direcciones IP por hasta 30 días. Sus servidores están en Estados Unidos, por lo que esta transferencia se rige por la <a href="#transferencias">sección 9</a>.
     </div>
 
-    <h2 id="transferencias"><span class="num">08</span> Transferencias fuera de Chile</h2>
+    <h2 id="negocios"><span class="num">08</span> Datos de los negocios del directorio</h2>
+    <p>Esta sección no trata sobre ti como persona usuaria, sino sobre los <strong>negocios de servicios para mascotas</strong> que aparecen en la pestaña Lugares. La incluimos porque parte de esa información puede constituir dato personal —por ejemplo, cuando el local es una empresa individual o una consulta a nombre de una persona natural— y porque los negocios listados tienen derecho a saber qué tratamos y cómo pedir cambios.</p>
+
+    <h3>Qué tratamos y de dónde viene</h3>
+    <p>Tratamos <strong>información de contacto comercial de establecimientos</strong>: nombre del local, categoría, dirección, coordenadas, teléfono comercial fijo publicado, sitio web y horario. Proviene de <strong>bases de datos geográficas abiertas</strong> —principalmente Overture Maps Foundation (CDLA-Permissive 2.0) y OpenStreetMap (ODbL)— y de información que los propios negocios publican, complementada con carga y correcciones nuestras.</p>
+    <div class="note">
+      Datos de © colaboradores de OpenStreetMap y de Overture Maps Foundation.
+    </div>
+
+    <h3>Qué deliberadamente no publicamos</h3>
+    <ul>
+      <li><strong>Números de teléfono móvil.</strong> Aunque la fuente los traiga, no se publican en ninguna ficha: suelen ser el teléfono personal de una persona y no el canal de atención del local.</li>
+      <li><strong>Datos de identificación tributaria</strong> (RUT, patente comercial, inicio de actividades). No los pedimos ni los almacenamos, ni siquiera para verificar una ficha.</li>
+      <li><strong>Datos de personas</strong> que trabajan en el local: no tratamos nombres, cargos ni contactos individuales.</li>
+    </ul>
+
+    <h3>Base de licitud</h3>
+    <p>El tratamiento se funda en el <strong>interés legítimo</strong> de ofrecer a la comunidad un directorio de servicios cercanos, construido sobre información comercial que ya es pública y que los propios negocios difunden para ser encontrados. Ese interés se pondera con los derechos del negocio mediante las salvaguardas de esta sección: alcance mínimo, exclusión de datos personales no comerciales y un canal de baja siempre disponible.</p>
+
+    <h3>Derechos del negocio listado</h3>
+    <p>Si administras un negocio que figura en el directorio, puedes escribirnos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a> para:</p>
+    <ul>
+      <li><strong>Acceder</strong> a los datos de tu ficha y conocer su origen.</li>
+      <li><strong>Rectificar</strong> cualquier dato incorrecto o desactualizado.</li>
+      <li><strong>Solicitar la eliminación</strong> de la ficha, sin necesidad de justificar el motivo y sin costo.</li>
+      <li><strong>Oponerte</strong> al tratamiento.</li>
+    </ul>
+    <p>Antes de ejecutar una rectificación o una baja <strong>verificamos que la solicitud proviene del propio negocio</strong>, mediante un correo desde su dominio propio o una llamada al teléfono comercial ya publicado en la ficha (nunca a uno indicado en la solicitud). Esta verificación existe para impedir que un tercero elimine o altere la ficha de un competidor; el procedimiento completo está en la <a href="/terms.html#lugares">sección 10 de los Términos de Servicio</a>. Atendemos estas solicitudes en un plazo razonable y, en todo caso, dentro de los plazos legales.</p>
+    <p>Si consideras que no respetamos estos derechos, puedes reclamar ante la <strong>Agencia de Protección de Datos Personales</strong> de Chile.</p>
+
+    <h2 id="transferencias"><span class="num">09</span> Transferencias fuera de Chile</h2>
     <p>Algunos de los proveedores anteriores procesan o almacenan datos en servidores ubicados fuera de Chile (por ejemplo, en Estados Unidos o la Unión Europea). Cuando eso ocurre, exigimos a cada proveedor garantías de seguridad y confidencialidad equivalentes al estándar de la ley chilena, mediante los contratos y cláusulas de protección de datos correspondientes. Si un destino no ofrece un nivel de protección adecuado, nos aseguramos de que existan garantías contractuales que justifiquen la transferencia.</p>
 
-    <h2 id="conservacion"><span class="num">09</span> Cuánto tiempo los guardamos</h2>
+    <h2 id="conservacion"><span class="num">10</span> Cuánto tiempo los guardamos</h2>
     <p>Aplicamos el principio de conservar los datos solo el tiempo necesario:</p>
     <ul>
       <li><strong>Datos de cuenta, mascotas e historial de paseos:</strong> mientras tu cuenta esté activa.</li>
@@ -303,10 +345,11 @@
       <li><strong>Ubicación en vivo del paseo:</strong> sus coordenadas se borran al terminar el paseo; los puntos temporales de la trayectoria también se eliminan en ese momento.</li>
       <li><strong>Eventos:</strong> hasta su fecha o cierre.</li>
       <li><strong>Reportes de fallos y analítica de uso:</strong> por períodos acotados, con datos mínimos.</li>
-      <li><strong>Al eliminar tu cuenta:</strong> tus datos se borran de inmediato de la base de datos activa, y de las copias de seguridad cifradas en un plazo máximo de <span>30</span> días (ver <a href="#eliminar">sección 11</a>).</li>
+      <li><strong>Interacciones con fichas del directorio:</strong> se conservan mientras sean necesarias para elaborar los reportes mensuales del negocio y, luego, por períodos acotados con fines estadísticos. Se eliminan si el negocio sale del directorio y al eliminar tu cuenta.</li>
+      <li><strong>Al eliminar tu cuenta:</strong> tus datos se borran de inmediato de la base de datos activa, y de las copias de seguridad cifradas en un plazo máximo de <span>30</span> días (ver <a href="#eliminar">sección 12</a>).</li>
     </ul>
 
-    <h2 id="derechos"><span class="num">10</span> Tus derechos sobre tus datos</h2>
+    <h2 id="derechos"><span class="num">11</span> Tus derechos sobre tus datos</h2>
     <p>Como titular de los datos, tienes derecho a:</p>
     <ul>
       <li><strong>Acceso:</strong> saber qué datos tuyos tratamos y cómo.</li>
@@ -319,12 +362,12 @@
     </ul>
     <p>Para ejercer cualquiera de estos derechos, escríbenos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>. Responderemos en los plazos que fija la ley. Si consideras que no respetamos tus derechos, puedes reclamar ante la <strong>Agencia de Protección de Datos Personales</strong> de Chile.</p>
 
-    <h2 id="eliminar"><span class="num">11</span> Cómo eliminar tu cuenta</h2>
+    <h2 id="eliminar"><span class="num">12</span> Cómo eliminar tu cuenta</h2>
     <p>Puedes borrar tu cuenta de forma permanente, sin período de espera, desde la propia app: <strong>Perfil → Eliminar cuenta</strong>. El borrado elimina tu perfil, tus mascotas, tu contenido, tus mensajes y tus fotos.</p>
     <p><strong>Qué significa "borrado" en la práctica:</strong> tus datos se eliminan de inmediato y de forma permanente de la <strong>base de datos activa</strong> (es una acción que no se puede deshacer desde la app). Por razones de seguridad y continuidad del servicio, nuestra infraestructura mantiene <strong>copias de seguridad cifradas</strong> durante un máximo de <span>30</span> días, tras lo cual esas copias se sobrescriben y tus datos desaparecen también de ellas. Durante esa ventana, las copias solo se usarían para recuperar el sistema ante un incidente grave, no para uso ordinario.</p>
     <p>Si no puedes acceder a la app, también puedes solicitar la eliminación escribiendo a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a> desde el correo asociado a tu cuenta. Más información en <a href="/eliminar-cuenta">wuffi.nortiapps.com/eliminar-cuenta</a>.</p>
 
-    <h2 id="seguridad"><span class="num">12</span> Cómo protegemos tus datos</h2>
+    <h2 id="seguridad"><span class="num">13</span> Cómo protegemos tus datos</h2>
     <p>La seguridad es parte del diseño, no un parche posterior. Entre otras medidas:</p>
     <ul>
       <li><strong>Control de acceso por filas (RLS):</strong> cada usuario solo puede acceder a sus propios datos; las reglas se aplican en el servidor, no solo en la app.</li>
@@ -335,13 +378,13 @@
     </ul>
     <p>Si llegara a ocurrir una vulneración de seguridad que afecte tus datos personales y represente un riesgo para ti, te lo notificaremos y daremos aviso a la Agencia de Protección de Datos en los plazos legales (dentro de 72 horas desde que tengamos conocimiento del incidente).</p>
 
-    <h2 id="menores"><span class="num">13</span> Menores de edad</h2>
+    <h2 id="menores"><span class="num">14</span> Menores de edad</h2>
     <p>Wuffi está dirigida a <strong>personas mayores de 18 años</strong>. Por su naturaleza (geolocalización y comunidad de vecinos), no está pensada para menores y no recolectamos datos de menores de edad de forma consciente. Si crees que un menor creó una cuenta, escríbenos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a> y la eliminaremos.</p>
 
-    <h2 id="cambios"><span class="num">14</span> Cambios a esta política</h2>
+    <h2 id="cambios"><span class="num">15</span> Cambios a esta política</h2>
     <p>Si actualizamos esta política, cambiaremos la fecha de "última actualización" y, ante cambios importantes, te avisaremos dentro de la app. El uso continuado de Wuffi tras la actualización implica que conoces la versión vigente.</p>
 
-    <h2 id="contacto"><span class="num">15</span> Contacto</h2>
+    <h2 id="contacto"><span class="num">16</span> Contacto</h2>
     <p>¿Dudas sobre privacidad? Escríbenos a <a href="mailto:nortiapps@gmail.com">nortiapps@gmail.com</a>.<br>
     <strong>NortiApps SpA</strong> — RUT <span>78417995-8</span> — <span>Antonio Bellet Nro. 193, Of. 302, Providencia, Región Metropolitana, Chile</span>.</p>
   </main>
@@ -352,8 +395,8 @@
     <div>© <span>2026</span> NortiApps SpA · Wuffi</div>
     <div class="footer-links">
       <a href="/">Inicio</a>
-      <a href="/terms">Términos de Servicio</a>
-      <a href="/privacy">Política de Privacidad</a>
+      <a href="/terms.html">Términos de Servicio</a>
+      <a href="/privacy.html">Política de Privacidad</a>
       <a href="/eliminar-cuenta">Eliminar cuenta</a>
     </div>
   </div>
