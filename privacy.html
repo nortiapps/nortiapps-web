@@ -155,8 +155,8 @@
       <h1>Tus datos, tratados con el mismo cuidado que tu privacidad en un paseo.</h1>
       <p class="lead">Wuffi se diseñó con privacidad desde el inicio: pedimos solo lo necesario, difuminamos tu ubicación y borramos lo que deja de hacer falta. Esto explica, en concreto, qué tratamos y por qué.</p>
       <div class="meta" style="margin-top:22px">
-        <span>Última actualización: <b><span>22 de septiembre de 2026</span></b></span>
-        <span>Versión: <b>1.1</b></span>
+        <span>Última actualización: <b><span>9 de octubre de 2026</span></b></span>
+        <span>Versión: <b>1.2</b></span>
       </div>
     </div>
 
@@ -230,6 +230,7 @@
       <li><strong>Es opcional y la controlas tú.</strong> La app solo accede al GPS durante un paseo si activas el interruptor "compartir ubicación". Puedes pasear sin compartir.</li>
       <li><strong>Tu dispositivo captura tu ubicación exacta</strong> para mostrarte el mapa y registrar tu paseo. Esa posición precisa se procesa para <strong>difuminarse a un área aproximada de ~100 metros antes de ser visible para tus amigos</strong>: ellos nunca ven tu punto exacto, solo tú. Mientras el paseo está activo, tu posición precisa se guarda de forma temporal y con acceso restringido únicamente a ti.</li>
       <li><strong>Se borra al terminar.</strong> Al finalizar el paseo, la posición en vivo se elimina. Lo que se conserva es el resumen del paseo (duración, distancia y, opcionalmente, la ruta para tu historial personal).</li>
+      <li><strong>Los mapas los muestra Mapbox.</strong> Para dibujar el mapa en tu pantalla, la app descarga las imágenes del mapa (<i>tiles</i>) desde Mapbox. Mapbox recibe la dirección IP de tu teléfono y la zona del mapa que estás mirando, pero <strong>no tu cuenta, tu nombre ni tu ruta</strong>.</li>
       <li><strong>Ajuste de la ruta a las calles (Mapbox).</strong> Si guardas la ruta para tu historial, <strong>una sola vez y después de terminar el paseo</strong>, nuestro servidor envía esa ruta (no tu posición en vivo) a Mapbox para alinearla a las calles del mapa. Mapbox actúa como <strong>encargado de tratamiento</strong>: según sus políticas públicas no vende datos personales ni construye perfiles de usuarios. Se explica en la <a href="#terceros">sección 7</a>.</li>
       <li><strong>Conteo de actividad cercana, anónimo.</strong> En el inicio mostramos "personas paseando cerca" como un número, sin identificar a nadie, y solo si hay al menos tres personas, para que el dato no permita reconocer individuos.</li>
       <li><strong>Tu hogar se difumina en tu propio teléfono.</strong> La ubicación de tu perfil se redondea a ~1,1 km en el dispositivo antes de enviarse, así que tu dirección exacta nunca llega a nuestros servidores.</li>
@@ -244,8 +245,8 @@
           <tr><td><b>Ubicación precisa</b><br><code>ACCESS_FINE_LOCATION</code> / <i>Location When In Use</i></td><td>Registrar tu paseo, mostrar tu posición en el mapa y compartir tu área aproximada con amigos</td><td>Solo durante un paseo que tú inicias, en primer plano</td></tr>
           <tr><td><b>Ubicación aproximada</b><br><code>ACCESS_COARSE_LOCATION</code></td><td>Mostrar actividad y contenido de tu zona</td><td>En primer plano, al usar el mapa y el inicio</td></tr>
           <tr><td><b>Servicio en primer plano con ubicación</b><br><code>FOREGROUND_SERVICE</code> + <code>FOREGROUND_SERVICE_LOCATION</code></td><td>Seguir registrando tu paseo aunque bloquees la pantalla o cambies de app, mostrando una notificación visible "Paseo en curso"</td><td>Solo mientras un paseo está activo</td></tr>
-          <tr><td><b>Cámara</b><br><code>CAMERA</code> / <i>Camera</i></td><td>Tomar la foto de tu perro, de un paseo o de un aviso</td><td>Solo cuando eliges "tomar foto"</td></tr>
-          <tr><td><b>Fotos / galería</b><br><code>READ_MEDIA_IMAGES</code> (Android 13+) o <code>READ_EXTERNAL_STORAGE</code> / <i>Photo Library</i></td><td>Elegir una foto existente desde tu galería</td><td>Solo cuando eliges "elegir de la galería"</td></tr>
+          <tr><td><b>Cámara</b><br>(sin permiso en Android) / <i>Camera</i></td><td>Tomar la foto de tu perro, de un paseo o de un aviso. En Android se abre la app de cámara del sistema, así que Wuffi no pide el permiso de cámara</td><td>Solo cuando eliges "tomar foto"</td></tr>
+          <tr><td><b>Fotos / galería</b><br>(sin permiso en Android: selector de fotos del sistema) / <i>Photo Library</i></td><td>Elegir una foto existente. En Android usamos el selector de fotos del sistema: Wuffi recibe solo la foto que eliges y <strong>no accede al resto de tu galería</strong></td><td>Solo cuando eliges "elegir de la galería"</td></tr>
           <tr><td><b>Notificaciones</b><br><code>POST_NOTIFICATIONS</code> (Android 13+) / <i>Notifications</i></td><td>Enviarte avisos (mensajes, alertas de tu zona, recordatorios)</td><td>Si las aceptas; configurables por tipo</td></tr>
           <tr><td><b>Red / conexión</b><br><code>INTERNET</code>, <code>ACCESS_NETWORK_STATE</code></td><td>Comunicar la app con nuestros servidores</td><td>Permanente (es necesaria para funcionar)</td></tr>
         </tbody>
@@ -284,11 +285,11 @@
           <tr><td><b>Supabase</b></td><td>Base de datos, autenticación y almacenamiento (la infraestructura central)</td><td>Casi todos los datos de la app</td></tr>
           <tr><td><b>Google Firebase</b></td><td>Notificaciones push (FCM) y reportes de fallos (Crashlytics)</td><td>Token de notificaciones, datos técnicos del fallo, identificador de cuenta</td></tr>
           <tr><td><b>Google</b></td><td>Inicio de sesión con Google (opcional)</td><td>Verificación de tu identidad de Google</td></tr>
-          <tr><td><b>Mapbox</b></td><td>Ajustar la ruta de tus paseos a las calles del mapa (una vez, al terminar el paseo)</td><td>La geometría de la ruta de tu paseo (puntos de la trayectoria, no tu posición en vivo)</td></tr>
-          <tr><td><b>OpenStreetMap</b></td><td>Mostrar el mapa y, como fuente abierta, alimentar el directorio de Lugares</td><td>Solicitudes de mapa (no contenido de cuenta). Como fuente del directorio, <b>no recibe datos tuyos</b></td></tr>
+          <tr><td><b>Mapbox</b></td><td>Mostrar los mapas de la app y ajustar la ruta de tus paseos a las calles del mapa (una vez, al terminar el paseo)</td><td>Para los mapas: dirección IP y zona del mapa que se está mirando, sin datos de tu cuenta. Para el ajuste: la geometría de la ruta de tu paseo (puntos de la trayectoria, no tu posición en vivo)</td></tr>
+          <tr><td><b>OpenStreetMap</b></td><td>Fuente abierta de los datos del mapa y del directorio de Lugares</td><td>Ninguno: la app no se conecta a OpenStreetMap, <b>no recibe datos tuyos</b></td></tr>
           <tr><td><b>Overture Maps Foundation</b></td><td>Fuente abierta de la que se construye el directorio de Lugares</td><td>Ninguno: es una descarga de datos de negocios hecha por nosotros, <b>no recibe datos tuyos</b></td></tr>
           <tr><td><b>Open-Meteo</b></td><td>Avisos de clima</td><td>Por zona climática, <b>no</b> por usuario individual</td></tr>
-          <tr><td><b>Resend</b></td><td>Enviarnos por correo tus comentarios de la app</td><td>Contenido del comentario</td></tr>
+          <tr><td><b>Resend</b></td><td>Enviar los correos de tu cuenta (confirmación de correo y cambio de contraseña) y enviarnos por correo tus comentarios de la app</td><td>Tu dirección de correo electrónico y el contenido de esos correos; el contenido de tus comentarios</td></tr>
           <tr><td><b>Cloudflare Turnstile</b></td><td>Protección anti-bots al registrarse o iniciar sesión</td><td>Señales técnicas del navegador (no contenido)</td></tr>
         </tbody>
       </table>
@@ -300,7 +301,7 @@
     </div>
     <div class="note">
       <div class="note-title">Sobre Mapbox y los datos de ubicación</div>
-      Como Mapbox es el único proveedor que procesa la geometría de tus rutas, lo detallamos aparte. Mapbox actúa como <strong>encargado de tratamiento</strong> bajo su acuerdo de tratamiento de datos (DPA): procesa la ruta por cuenta nuestra para devolverla ajustada a las calles. Según las políticas públicas de Mapbox, <strong>no vende datos personales y no rastrea a las personas usuarias ni construye perfiles entre sesiones</strong>; mantiene certificaciones de seguridad (SOC 2, ISO 27001 y Data Privacy Framework UE-EE. UU.) y conserva las direcciones IP por hasta 30 días. Sus servidores están en Estados Unidos, por lo que esta transferencia se rige por la <a href="#transferencias">sección 9</a>.
+      Como Mapbox es el único proveedor que procesa la geometría de tus rutas, y además muestra los mapas de la app, lo detallamos aparte. Mapbox actúa como <strong>encargado de tratamiento</strong> bajo su acuerdo de tratamiento de datos (DPA): procesa la ruta por cuenta nuestra para devolverla ajustada a las calles, y entrega las imágenes del mapa sin recibir datos de tu cuenta. Según las políticas públicas de Mapbox, <strong>no vende datos personales y no rastrea a las personas usuarias ni construye perfiles entre sesiones</strong>; mantiene certificaciones de seguridad (SOC 2, ISO 27001 y Data Privacy Framework UE-EE. UU.) y conserva las direcciones IP por hasta 30 días. Sus servidores están en Estados Unidos, por lo que esta transferencia se rige por la <a href="#transferencias">sección 9</a>.
     </div>
 
     <h2 id="negocios"><span class="num">08</span> Datos de los negocios del directorio</h2>
